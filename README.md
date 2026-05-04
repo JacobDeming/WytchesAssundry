@@ -1,2 +1,2 @@
 # WytchesAssundry
-The website for the "Wytches" occult shop in Marble Basing (ARG)
+The website for the "Wytches" occult shop in Marble Basin (ARG)
