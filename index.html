@@ -1,12 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WYTCHES — Marble Basin, Washington</title>
+  <link rel="preconnect" href__="https://fonts.googleapis.com" />
+  <link rel="preconnect" href__="https://fonts.gstatic.com" crossorigin />
+  <link href__="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
+
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f0a14;
+      --bg-card:   #1a1225;
+      --bg-sec:    #1e1530;
+      --purple:    #8b3fc8;
+      --purple-lt: #a855f7;
+      --gold:      #d4a017;
+      --gold-lt:   #f0c040;
+      --text:      #e2d9f3;
+      --text-muted:#7c6a9e;
+      --border:    #5b3d8a;
+      --radius:    0px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'IM Fell English SC', serif;
+      min-height: 100vh;
+
+      /* starfield background */
+      background-image:
+        radial-gradient(1px 1px at 10% 20%,  var(--purple-lt) 50%, transparent 50%),
+        radial-gradient(1px 1px at 30% 70%,  var(--gold)      50%, transparent 50%),
+        radial-gradient(1px 1px at 50% 10%,  var(--purple-lt) 50%, transparent 50%),
+        radial-gradient(1px 1px at 70% 50%,  var(--gold)      50%, transparent 50%),
+        radial-gradient(1px 1px at 90% 80%,  var(--purple-lt) 50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 20% 45%, #c084fc       50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 60% 30%, #c084fc       50%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 80% 15%, var(--purple-lt) 50%, transparent 50%),
+        radial-gradient(1px 1px at 45% 85%, var(--gold)       50%, transparent 50%),
+        radial-gradient(1px 1px at 15% 60%, var(--purple-lt)  50%, transparent 50%);
+    }
+
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border-left:  4px solid var(--purple);
+      border-right: 4px solid var(--purple);
+      min-height: 100vh;
+      box-shadow: 0 0 40px rgba(139, 63, 200, 0.3);
+    }
+
+    .font-courier { font-family: 'Courier Prime', monospace; }
+    .font-fell    { font-family: 'IM Fell English SC', serif; }
+
+    .bevel-raised { border: 3px outset #5b3d8a; }
+    .bevel-inset  { border: 3px inset  #5b3d8a; }
+
+    .retro-hr {
+      height: 4px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--purple),
+        var(--gold),
+        var(--purple),
+        transparent
+      );
+      border: none;
+      margin: 12px 0;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 20px 16px;
+      background-color: var(--bg-sec);
+      border-bottom: 4px solid var(--purple);
+    }
+
+    header .icon-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    header .icon-row span { font-size: 1.2rem; }
+
+    header h1 {
+      font-family: 'IM Fell English SC', serif;
+      font-size: clamp(2rem, 7vw, 3rem);
+      color: var(--purple-lt);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      margin-top: 4px;
+    }
+
+    header .est {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    header .symbol-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: 'Courier Prime', monospace;
+    }
+
+    /* Marquee */
+    .marquee-bar {
+      background-color: rgba(139, 63, 200, 0.15);
+      border-top: 2px solid var(--purple);
+      border-bottom: 2px solid var(--purple);
+      overflow: hidden;
+      padding: 4px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      animation: marquee 18s linear infinite;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--bg-sec);
+      border: 3px outset #5b3d8a;
+      padding: 6px;
+      text-align: center;
+    }
+
+    nav .nav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    nav a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 4px 10px;
+      display: inline-block;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: var(--purple);
+      color: #f3e8ff;
+    }
+
+    main {
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    /* Section boxes */
+    .box-raised {
+      background-color: var(--bg-sec);
+      border: 3px outset #5b3d8a;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .box-inset {
+      background-color: var(--bg);
+      border: 3px inset #5b3d8a;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 1.4rem;
+      color: var(--purple-lt);
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 1.15rem;
+      color: var(--purple-lt);
+      margin-bottom: 12px;
+    }
+
+    .body-text {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .body-text strong { color: var(--purple-lt); }
+
+    /* Blinking */
+    .blink-notice {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      margin-bottom: 24px;
+      animation: blink 1s step-end infinite;
+    }
+
+    /* Offerings */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      text-align: left;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .offer-grid { grid-template-columns: 1fr; }
+    }
+
+    .offer-card {
+      background-color: var(--bg-sec);
+      border: 3px outset #5b3d8a;
+      padding: 10px;
+    }
+
+    .offer-card .title {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      margin-bottom: 4px;
+    }
+
+    .offer-card .desc {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Store hours */
+    .hours-table {
+      margin: 0 auto;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85rem;
+      border-collapse: collapse;
+    }
+
+    .hours-table td {
+      padding: 3px 0;
+    }
+
+    .hours-table td:first-child {
+      color: var(--gold-lt);
+      padding-right: 28px;
+      text-align: left;
+    }
+
+    .hours-table td:last-child {
+      color: var(--text);
+    }
+
+    .hours-note {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* Hidden quote */
+    .hidden-quote {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      color: rgba(124, 106, 158, 0.22);
+      text-decoration: none;
+      cursor: default;
+      display: block;
+      margin: 24px 0;
+      transition: text-shadow 0.3s;
+    }
+
+    .hidden-quote:hover {
+      cursor: pointer;
+      text-shadow: 0 0 8px var(--purple-lt);
+      color: rgba(168, 85, 247, 0.6);
+    }
+
+    /* Stars */
+    .star-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .star {
+      font-size: 0.7rem;
+      color: var(--purple-lt);
+      animation: starTwinkle 2s ease-in-out infinite;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      background-color: var(--bg-sec);
+      border-top: 4px solid var(--purple);
+      margin-top: 32px;
+    }
+
+    footer .counter-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .counter-display {
+      background-color: var(--bg);
+      border: 3px inset #5b3d8a;
+      padding: 2px 10px;
+      color: var(--gold-lt);
+      font-family: 'Courier Prime', monospace;
+      font-weight: bold;
+      font-size: 0.85rem;
+      display: inline-block;
+      letter-spacing: 0.1em;
+    }
+
+    .netscape-note {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin: 8px 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+    }
+
+    .footer-links a {
+      color: var(--purple-lt);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: var(--gold-lt); }
+    .footer-links .sep    { color: var(--text-muted); }
+
+    .hidden-pentagram {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      cursor: default;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .hidden-pentagram:hover {
+      cursor: pointer;
+      text-shadow: 0 0 10px var(--purple-lt);
+    }
+
+    .copyright {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes marquee {
+      from { transform: translateX(100vw); }
+      to   { transform: translateX(-100%); }
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 4px var(--purple),
+          0 0 8px rgba(139,63,200,0.5);
+      }
+      50% {
+        text-shadow:
+          0 0 10px var(--purple-lt),
+          0 0 20px var(--purple),
+          0 0 30px rgba(139,63,200,0.4);
+      }
+    }
+
+    .glow { animation: pulseGlow 3s ease-in-out infinite; }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to Wytches</h1>
-    <h5>Marble Basin's one-and-only occult shop</h5>
+  <div class="wrapper">
+
+    <header>
+      <div class="icon-row">
+        <span style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="color:var(--purple-lt); font-size:1.3rem;">☽</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+      </div>
+      <h1 class="glow">
+        <a href__="index.html">✦ WYTCHES ✦</a>
+      </h1>
+      <p class="sub">~ Marble Basin, Washington ~</p>
+      <p class="est">Est. 1987 &mdash; &ldquo;Where the Veil is Thin&rdquo;</p>
+      <div class="symbol-row">
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span>&#9789; &#9734; &#9790;</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+      </div>
+    </header>
+
+    <div class="marquee-bar">
+      <span class="marquee-inner">
+        ★ Welcome to Wytches! ★ New shipment of crystals arriving this Samhain! ★ Tarot readings available Tues &amp; Thurs ★ Ask about our loyalty program ★ Full Moon Circle this Saturday ★ &nbsp;&nbsp;&nbsp;&nbsp; ★ Welcome to Wytches! ★ New shipment of crystals arriving this Samhain! ★ Tarot readings available Tues &amp; Thurs ★ Ask about our loyalty program ★ Full Moon Circle this Saturday ★
+      </span>
+    </div>
+
+    <nav>
+      <div class="nav-inner">
+        <a href__="index.html" class="active">~ Home ~</a>
+        <a href__="shoppe.html">~ Shoppe ~</a>
+        <a href__="about.html">~ About Us ~</a>
+        <a href__="guestbook.html">~ Guestbook ~</a>
+        <a href__="contact.html">~ Contact ~</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Welcome -->
+      <div class="box-raised">
+        <h2>&#9789; Merrily Met, Traveler! &#9790;</h2>
+        <div class="retro-hr"></div>
+        <p class="body-text">
+          Welcome to the online home of <strong>Wytches</strong>, Marble Basin's premier occult shoppe since 1957. Nestled in the misty heart of Washington's most mysterious town, we offer a carefully curated selection of magickal supplies, rare herbs, crystals, candles, and esoteric literature.
+        </p>
+      </div>
+
+      <!-- Blink notice -->
+      <p class="blink-notice">★★★ NEW! Samhain Collection Now Available! ★★★</p>
+
+      <!-- What we offer -->
+      <div class="box-inset">
+        <h3>~ What We Offer ~</h3>
+        <div class="offer-grid">
+          <div class="offer-card">
+            <p class="title">✦ Crystals &amp; Gemstones</p>
+            <p class="desc">Hand-selected from around the world</p>
+          </div>
+          <div class="offer-card">
+            <p class="title">✦ Herbs &amp; Incense</p>
+            <p class="desc">Dried, bundled, and loose leaf varieties</p>
+          </div>
+          <div class="offer-card">
+            <p class="title">✦ Tarot &amp; Divination</p>
+            <p class="desc">Decks, pendulums, scrying mirrors</p>
+          </div>
+          <div class="offer-card">
+            <p class="title">✦ Ritual Candles</p>
+            <p class="desc">Dressed, anointed, and spell-ready</p>
+          </div>
+          <div class="offer-card">
+            <p class="title">✦ Books &amp; Grimoires</p>
+            <p class="desc">Rare and modern esoteric texts</p>
+          </div>
+          <div class="offer-card">
+            <p class="title">✦ Statuary &amp; Altar Tools</p>
+            <p class="desc">Athames, chalices, cauldrons &amp; more</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="retro-hr"></div>
+
+      <!-- Store hours -->
+      <div class="box-raised">
+        <h3>~ Store Hours ~</h3>
+        <table class="hours-table">
+          <tr>
+            <td>Monday</td>
+            <td>CLOSED</td>
+          </tr>
+          <tr>
+            <td>Tues &ndash; Fri</td>
+            <td>11:00am &ndash; 7:00pm</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>10:00am &ndash; 9:00pm</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>12:00pm &ndash; 5:00pm</td>
+          </tr>
+        </table>
+        <p class="hours-note">* Extended hours during sabbats &amp; full moons</p>
+      </div>
+
+      <!-- Hidden link -->
+      <a href__="inner-circle.html" class="hidden-quote">
+        &ldquo;Not all who wander are lost &mdash; some seek the deeper mysteries&rdquo;
+      </a>
+
+      <!-- Twinkling stars -->
+      <div class="star-row">
+        <span class="star" style="animation-delay:0s">✦</span>
+        <span class="star" style="animation-delay:0.3s">✦</span>
+        <span class="star" style="animation-delay:0.6s">✦</span>
+        <span class="star" style="animation-delay:0.9s">✦</span>
+        <span class="star" style="animation-delay:1.2s">✦</span>
+      </div>
+    </main>
+
+    <footer>
+      <div class="retro-hr" style="margin-bottom:16px;"></div>
+
+      <p class="counter-label">
+        You are visitor number:
+        <span class="counter-display" id="counter">009731</span>
+      </p>
+
+      <p class="netscape-note">Best viewed in Netscape Navigator 3.0 at 800x600</p>
+
+      <div class="footer-links">
+        <span>[ </span>
+        <a href__="index.html">Home</a>
+        <span class="sep">|</span>
+        <a href__="shoppe.html">Shoppe</a>
+        <span class="sep">|</span>
+        <a href__="about.html">About</a>
+        <span class="sep">|</span>
+        <a href__="contact.html">Contact</a>
+        <span> ]</span>
+      </div>
+
+      <a href__="inner-circle.html" class="hidden-pentagram" title="">⛧</a>
+
+      <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
+      <p class="copyright" style="margin-top:4px;">Webmaster: raven@wytches-marblebasin.com</p>
+    </footer>
+
+  </div>
+
+  <!-- ══ JS ══════════════════════════════════════════════════ -->
+  <script>
+    // Visitor counter — reads from localStorage so it persists across visits
+    (function () {
+      const key = 'wytches_visits';
+      const base = 9731;
+      let count = parseInt(localStorage.getItem(key) || base, 10);
+      count += 1;
+      localStorage.setItem(key, count);
+      document.getElementById('counter').textContent =
+        String(count).padStart(6, '0');
+    })();
+  </script>
+
 </body>
 </html>
