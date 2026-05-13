@@ -7,17 +7,81 @@
   <title>WYTCHES — Marble Basin, Washington</title>
   <link rel="preconnect" href__="https://fonts.googleapis.com" />
   <link rel="preconnect" href__="https://fonts.gstatic.com" crossorigin />
-  <link href__="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
+  <link href__="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="src/CSS/styles.css">
   <style>
     @media (min-width: 480px) {
-      .shoppe-category {
+      .shoppe-grid {
         display: grid;
+        gap: 10px;
+        text-align: left;
+        margin-top: 4px;
         grid-template-areas:
           's1 s2 s3'
           's4 s5 s6'
           's7 s8 s9';
-        background-color: blue;
+      }
+
+      .shoppe-card {
+        padding: 10px;
+      }
+
+      .shoppe-card .title {
+        font-family: "Courier Prime", monospace;
+        font-size: 0.82rem;
+        color: var(--gold-lt);
+        margin-bottom: 4px;
+        text-align: center;
+        
+      }
+
+      .shoppe-card .desc {
+        font-family: "Courier Prime", monospace;
+        font-size: 0.72rem;
+        color: var(--gold-lt);
+        text-align: center;
+      }
+
+      .shoppe-card .pricing{
+        font-family: "Courier Prime", monospace;
+        font-size: 0.76rem;
+        color: var(--text);
+        text-align: center;
+      }
+
+      .shoppe-card .pricing::before{
+        content:"$"
+      }
+
+      .phase1 {
+        background-color: var(--bg-phase1);
+        border: 3px outset var(--border);
+      }
+
+      .phase1:hover{
+        background-color: var(--bg-phase2);
+        border: 3px outset var(--border);
+      }
+
+      .phase2{
+        background-color: var(--bg-phase2);
+        border: 3px outset var(--border);
+      }
+
+      .phase2:hover{
+        background-color: var(--bg-phase3);
+        border: 3px outset var(--border);
+      }
+
+      .phase3{
+        background-color: var(--bg-phase3);
+        border: 3px outset var(--border);
+      }
+
+      .phase3:hover{
+        background-color: var(--bg-phase1);
+        border: 3px outset var(--border);
       }
 
       .item1 {
@@ -33,27 +97,27 @@
       }
 
       .item4 {
-        grid-area: '4';
+        grid-area: s4;
       }
 
       .item5 {
-        grid-area: '5';
+        grid-area: s5;
       }
 
       .item6 {
-        grid-area: '6';
+        grid-area: s6;
       }
 
       .item7 {
-        grid-area: '7';
+        grid-area: s7;
       }
 
       .item8 {
-        grid-area: '8';
+        grid-area: s8;
       }
 
       .item9 {
-        grid-area: '9';
+        grid-area: s9;
       }
     }
   </style>
@@ -64,9 +128,11 @@
 
     <header>
       <div class="icon-row">
-        <span style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span
+          style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
         <span style="color:var(--purple-lt); font-size:1.3rem;">☽</span>
-        <span style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span
+          style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
       </div>
       <h1 class="glow">
         <a href__="index.html">✦ WYTCHES ✦</a>
@@ -74,18 +140,22 @@
       <p class="sub">~ Marble Basin, Washington ~</p>
       <p class="sub">"Where the Veil is Thin"</p>
       <div class="symbol-row">
-        <span style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span
+          style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
         <span>&#9789; &#9734; &#9790;</span>
-        <span style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span
+          style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
       </div>
     </header>
 
     <div class="marquee-bar">
       <span class="marquee-inner">
-        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs
+        at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
       </span>
       <span class="marquee-inner">
-        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs
+        at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
       </span>
     </div>
 
@@ -107,28 +177,29 @@
       <!-- Crystals section -->
       <div class="box-inset">
         <h3>~ GEMSTONES ~</h3>
-        <div class="shoppe-category">
-          <div class="shoppe-card item1">
-            <p class="title">✦ Crystals &amp; Gemstones</p>
-            <p class="desc">Hand-selected from around the world</p>
+        <div class="shoppe-grid">
+          <div class="shoppe-card item1 phase1">
+            <p class="title">✦ Clear Quartz ✦</p>
+            <p class="pricing">105.00</p>
+            <p class="desc">Catch-all crystal amplifier</p>
           </div>
-          <div class="shoppe-card item2">
-            <p class="title">✦ Herbs &amp; Incense</p>
-            <p class="desc">Dried, bundled, and loose leaf varieties</p>
+          <div class="shoppe-card item2 phase2">
+            <p class="title">✦ Clear Quartz ✦</p>
+            <p class="desc">Catch-all crystal amplifier</p>
           </div>
-          <div class="shoppe-card item3">
+          <div class="shoppe-card item3 phase3">
             <p class="title">✦ Tarot &amp; Divination</p>
             <p class="desc">Decks, pendulums, scrying mirrors</p>
           </div>
-          <div class="shoppe-card">
+          <div class="shoppe-card item4 phase1">
             <p class="title">✦ Ritual Candles</p>
             <p class="desc">Dressed, anointed, and spell-ready</p>
           </div>
-          <div class="shoppe-card">
+          <div class="shoppe-card item5 phase1">
             <p class="title">✦ Books &amp; Grimoires</p>
             <p class="desc">Rare and modern esoteric texts</p>
           </div>
-          <div class="shoppe-card">
+          <div class="shoppe-card item6 phase1">
             <p class="title">✦ Statuary &amp; Altar Tools</p>
             <p class="desc">Athames, chalices, cauldrons &amp; more</p>
           </div>
@@ -137,28 +208,28 @@
 
       <div class="box-inset">
         <h3>~ HERBS & INCENSE ~</h3>
-        <div class="shoppe-category">
-          <div class="shoppe-card">
+        <div class="shoppe-grid">
+          <div class="offer-card">
             <p class="title">✦ Crystals &amp; Gemstones</p>
             <p class="desc">Hand-selected from around the world</p>
           </div>
-          <div class="shoppe-card">
+          <div class="offer-card">
             <p class="title">✦ Herbs &amp; Incense</p>
             <p class="desc">Dried, bundled, and loose leaf varieties</p>
           </div>
-          <div class="shoppe-card">
+          <div class="offer-card">
             <p class="title">✦ Tarot &amp; Divination</p>
             <p class="desc">Decks, pendulums, scrying mirrors</p>
           </div>
-          <div class="shoppe-card">
+          <div class="offer-card">
             <p class="title">✦ Ritual Candles</p>
             <p class="desc">Dressed, anointed, and spell-ready</p>
           </div>
-          <div class="shoppe-card">
+          <div class="offer-card">
             <p class="title">✦ Books &amp; Grimoires</p>
             <p class="desc">Rare and modern esoteric texts</p>
           </div>
-          <div class="shoppe-card">
+          <div class="offer-card">
             <p class="title">✦ Statuary &amp; Altar Tools</p>
             <p class="desc">Athames, chalices, cauldrons &amp; more</p>
           </div>
