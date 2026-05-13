@@ -11,26 +11,49 @@
   <link rel="stylesheet" href="src/CSS/styles.css">
   <style>
     @media (min-width: 480px) {
-      .offer-grid {
-        grid-template-columns: repeat(12, [col-start] 1fr);
+      .shoppe-category {
+        display: grid;
+        grid-template-areas:
+          's1 s2 s3'
+          's4 s5 s6'
+          's7 s8 s9';
+        background-color: blue;
       }
 
-      .offer-card:nth-child(odd) {
-        grid-column: col-start / span 6;
+      .item1 {
+        grid-area: s1;
       }
 
-      .offer-card:nth-child(even) {
-        grid-column: 7 / span 6;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .offer-grid {
-        grid-template-columns: 1fr;
+      .item2 {
+        grid-area: s2;
       }
 
-      .offer-card {
-        grid-column: 1fr;
+      .item3 {
+        grid-area: s3;
+      }
+
+      .item4 {
+        grid-area: '4';
+      }
+
+      .item5 {
+        grid-area: '5';
+      }
+
+      .item6 {
+        grid-area: '6';
+      }
+
+      .item7 {
+        grid-area: '7';
+      }
+
+      .item8 {
+        grid-area: '8';
+      }
+
+      .item9 {
+        grid-area: '9';
       }
     }
   </style>
@@ -68,8 +91,8 @@
 
     <nav>
       <div class="nav-inner">
-        <a href__="index.html" class="active">~ Home ~</a>
-        <a href="shoppe.html">~ Shoppe ~</a>
+        <a href="index.html">~ Home ~</a>
+        <a href__="shoppe.html" class="active">~ Shoppe ~</a>
         <a href__="about.html">~ About Us ~</a>
         <a href__="guestbook.html">~ Guestbook ~</a>
         <a href__="contact.html">~ Contact ~</a>
@@ -77,56 +100,70 @@
     </nav>
 
     <main>
-      <!-- Welcome -->
-      <div class="box-raised">
-        <h2>&#9789; Merrily Met, Traveler! &#9790;</h2>
-        <div class="retro-hr"></div>
-        <p class="body-text">
-          Welcome to the online home of <strong>Wytches</strong>, Marble Basin's premier occult shoppe since 1957.
-        </p>
-        <p class="body-text">
-          Nestled in the misty heart of Washington's most mysterious town, we offer a carefully curated selection of magickal supplies, rare herbs, crystals, candles, and esoteric literature that would be the pride of any occultist.
-        </p>
-      </div>
 
       <!-- Blink notice -->
       <p class="blink-notice">★★★ NEW! Samhain Collection Now Available! ★★★</p>
 
-      <!-- What we offer -->
+      <!-- Crystals section -->
       <div class="box-inset">
-        <h3>~ What We Offer ~</h3>
-        <div class="offer-grid">
-          <div class="offer-card">
+        <h3>~ GEMSTONES ~</h3>
+        <div class="shoppe-category">
+          <div class="shoppe-card item1">
             <p class="title">✦ Crystals &amp; Gemstones</p>
             <p class="desc">Hand-selected from around the world</p>
           </div>
-          <div class="offer-card">
+          <div class="shoppe-card item2">
             <p class="title">✦ Herbs &amp; Incense</p>
             <p class="desc">Dried, bundled, and loose leaf varieties</p>
           </div>
-          <div class="offer-card">
+          <div class="shoppe-card item3">
             <p class="title">✦ Tarot &amp; Divination</p>
             <p class="desc">Decks, pendulums, scrying mirrors</p>
           </div>
-          <div class="offer-card">
+          <div class="shoppe-card">
             <p class="title">✦ Ritual Candles</p>
             <p class="desc">Dressed, anointed, and spell-ready</p>
           </div>
-          <div class="offer-card">
+          <div class="shoppe-card">
             <p class="title">✦ Books &amp; Grimoires</p>
             <p class="desc">Rare and modern esoteric texts</p>
           </div>
-          <div class="offer-card">
+          <div class="shoppe-card">
             <p class="title">✦ Statuary &amp; Altar Tools</p>
             <p class="desc">Athames, chalices, cauldrons &amp; more</p>
           </div>
         </div>
       </div>
 
-      <!-- Hidden link -->
-      <a href__="inner-circle.html" class="hidden-quote">
-        Not all who wander are lost<br>Some seek deeper groves
-      </a>
+      <div class="box-inset">
+        <h3>~ HERBS & INCENSE ~</h3>
+        <div class="shoppe-category">
+          <div class="shoppe-card">
+            <p class="title">✦ Crystals &amp; Gemstones</p>
+            <p class="desc">Hand-selected from around the world</p>
+          </div>
+          <div class="shoppe-card">
+            <p class="title">✦ Herbs &amp; Incense</p>
+            <p class="desc">Dried, bundled, and loose leaf varieties</p>
+          </div>
+          <div class="shoppe-card">
+            <p class="title">✦ Tarot &amp; Divination</p>
+            <p class="desc">Decks, pendulums, scrying mirrors</p>
+          </div>
+          <div class="shoppe-card">
+            <p class="title">✦ Ritual Candles</p>
+            <p class="desc">Dressed, anointed, and spell-ready</p>
+          </div>
+          <div class="shoppe-card">
+            <p class="title">✦ Books &amp; Grimoires</p>
+            <p class="desc">Rare and modern esoteric texts</p>
+          </div>
+          <div class="shoppe-card">
+            <p class="title">✦ Statuary &amp; Altar Tools</p>
+            <p class="desc">Athames, chalices, cauldrons &amp; more</p>
+          </div>
+        </div>
+      </div>
 
       <div class="retro-hr"></div>
 
@@ -163,7 +200,6 @@
         <span class="star" style="animation-delay:0.9s">✦</span>
         <span class="star" style="animation-delay:1.2s">✦</span>
       </div>
-
     </main>
 
     <div class="retro-hr"></div>

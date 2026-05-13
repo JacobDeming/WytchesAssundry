@@ -157,11 +157,11 @@ header .symbol-row {
   animation: marquee 20s linear infinite;
 }
 
-.marquee-bar:hover span{
+.marquee-bar:hover span {
   animation-play-state: paused;
 }
 
-.marquee-bar a{
+.marquee-bar a {
   text-decoration: none;
   color: var(--gold-lt);
 }
@@ -260,24 +260,41 @@ h3 {
 }
 
 /* Offerings */
+
+.offer-card {
+  background-color: var(--bg-sec);
+  border: 3px outset #5b3d8a;
+  padding: 10px;
+}
+
 .offer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 10px;
   text-align: left;
   margin-top: 4px;
+}
+
+@media (min-width: 480px) {
+  .offer-grid {
+    grid-template-columns: repeat(12, [col-start] 1fr);
+  }
+
+  .offer-card:nth-child(odd) {
+    grid-column: col-start / span 6;
+  }
+
+  .offer-card:nth-child(even) {
+    grid-column: 7 / span 6;
+  }
 }
 
 @media (max-width: 480px) {
   .offer-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.offer-card {
-  background-color: var(--bg-sec);
-  border: 3px outset #5b3d8a;
-  padding: 10px;
+  .offer-card {
+    grid-column: 1fr;
+  }
 }
 
 .offer-card .title {
@@ -360,7 +377,7 @@ footer {
   padding: 24px 16px;
   background-color: var(--bg-sec);
   border-top: 4px solid var(--purple);
-  margin-top: 32px;
+  margin-top: 10px;
 }
 
 footer .counter-label {
@@ -410,20 +427,6 @@ footer .counter-label {
 }
 .footer-links .sep {
   color: var(--text-muted);
-}
-
-.hidden-pentagram {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  cursor: default;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.hidden-pentagram:hover {
-  cursor: pointer;
-  text-shadow: 0 0 10px var(--purple-lt);
 }
 
 .copyright {
