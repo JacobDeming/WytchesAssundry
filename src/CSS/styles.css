@@ -29,8 +29,8 @@ body {
 
   /* starfield background */
   background-image:
-    radial-gradient(1px 1px at 10% 20%, var(--purple-lt) 50%, transparent 50%),
-    radial-gradient(1px 1px at 30% 70%, var(--gold) 50%, transparent 50%),
+    radial-gradient(1px 1px at 10% 20%, var(--purple-lt) 50%, transparent 500%),
+    radial-gradient(1px 1px at 30% 70%, var(--gold) 50%, transparent 500%),
     radial-gradient(1px 1px at 50% 10%, var(--purple-lt) 50%, transparent 50%),
     radial-gradient(1px 1px at 70% 50%, var(--gold) 50%, transparent 50%),
     radial-gradient(1px 1px at 90% 80%, var(--purple-lt) 50%, transparent 50%),
@@ -179,7 +179,6 @@ header .symbol-row {
 /* Navigation */
 nav {
   background-color: var(--bg-phase1);
-  border: 3px outset var(--border);
   padding: 6px;
   text-align: center;
 }
@@ -221,7 +220,7 @@ main {
 
 .box-inset {
   background-color: var(--bg);
-  border: 3px inset var(--border);
+  border: 3px black;
   padding: 16px;
   margin-bottom: 24px;
 }

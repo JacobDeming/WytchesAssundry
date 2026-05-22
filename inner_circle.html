@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Inner Circle — Wytches</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="src/CSS/styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .content {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 1rem;
+            color: var(--primary);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .star-box {
+            padding: 1.5rem;
+            max-width: 28rem;
+            margin: 1rem auto;
+            position: relative;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .star-container {
+            background-color: var(--bg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .star-box-content {
+            position: relative;
+            z-index: 10;
+            margin-top: auto;
+        }
+
+        .star-box p {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 0.875rem;
+            color: var(--text);
+            margin-bottom: 6rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-align: left;
+        }
+
+        input {
+            background: transparent;
+            border: 3px inset transparent;
+            padding: 0.5rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.875rem;
+            color: var(--foreground);
+            text-align: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        button {
+            border: 3px var();
+            background: transparent;
+            color: var(--gold);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.875rem;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: ;
+        }
+
+        button:active {
+            border-style: inset;
+        }
+
+        .error {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--text);
+            animation: blink 1s step-end infinite;
+        }
+
+        .hint {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: hsl(270, 15%, 25%);
+            margin-top: 2rem;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 4px hsl(275, 60%, 50%), 0 0 8px hsl(275, 60%, 40%); }
+            50% { text-shadow: 0 0 8px hsl(275, 60%, 60%), 0 0 16px hsl(275, 60%, 50%), 0 0 24px hsl(275, 60%, 40%); }
+        }
+
+        @keyframes dimTwinkle {
+            0%, 100% { opacity: var(--base-op); }
+            50% { opacity: calc(var(--base-op) * 0.3); }
+        }
+
+        @keyframes brightTwinkle {
+            0%, 100% { opacity: 0.55; filter: drop-shadow(0 0 2px #c084fc); }
+            40% { opacity: 1; filter: drop-shadow(0 0 5px #a855f7) drop-shadow(0 0 10px #7c3aed); }
+            60% { opacity: 0.85; filter: drop-shadow(0 0 3px #c084fc); }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+    <header>
+      <div class="icon-row">
+        <span style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="color:var(--purple-lt); font-size:1.3rem;">☽</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+      </div>
+      <h1 class="glow">
+        <a href="index.html">✦ WYTCHES ✦</a>
+      </h1>
+      <p class="sub">~ Marble Basin, Washington ~</p>
+      <p class="sub">"Where the Veil is Thin"</p>
+      <div class="symbol-row">
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span>&#9789; &#9734; &#9790;</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+      </div>
+    </header>
+
+    <div class="marquee-bar">
+      <span class="marquee-inner">
+        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+      </span>
+      <span class="marquee-inner">
+        ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+      </span>
+    </div>
+
+    <nav>
+      <div class="nav-inner">
+        <a href="index.html" class="active">~ Home ~</a>
+        <a href="shoppe.html">~ Shoppe ~</a>
+        <a href__="about.html">~ About Us ~</a>
+        <a href__="guestbook.html">~ Guestbook ~</a>
+        <a href__="contact.html">~ Contact ~</a>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h2>⛧ The Inner Circle ⛧</h2>
+                <div class="retro-hr"></div>
+            </div>
+
+            <div class="star-box">
+                <div class="star-container">
+                    <svg id="starfield" xmlns="http://www.w3.org/2000/svg"></svg>
+                </div>
+
+                <div class="star-box-content">
+                    <p>You have found the hidden threshold<br>Now follow the stars</p>
+
+                    <form id="passphrase-form" class="form-group">
+                        <label>🔑 Speak the passphrase:</label>
+                        <input 
+                            type="text" 
+                            id="passphrase-input" 
+                            placeholder="..." 
+                            autocomplete="off"
+                        >
+                        <div id="error-message" style="visibility: hidden;" class="error">
+                            The wards hold. That is not the phrase.
+                        </div>
+                        <button type="submit">⛧ Enter ⛧</button>
+                    </form>
+                </div>
+            </div>
+
+            <p class="hint">Hint: Follow the Stars
+        </div>
+    </div>
+
+    <footer>
+
+      <p class="counter-label">
+        You are visitor number:
+        <span class="counter-display" id="counter">009731</span>
+      </p>
+
+      <p class="netscape-note">Best viewed in Netscape Navigator 3.0</p>
+
+      <div class="footer-links">
+        <span>[ </span>
+        <a href__="index.html">Home</a>
+        <span class="sep">|</span>
+        <a href__="shoppe.html">Shoppe</a>
+        <span class="sep">|</span>
+        <a href__="about.html">About</a>
+        <span class="sep">|</span>
+        <a href__="contact.html">Contact</a>
+        <span> ]</span>
+      </div>
+
+      <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
+      <p class="copyright" style="margin-top:4px;">Webmaster: Greg Kent</p>
+    </footer>
+
+    <script>
+        // Star Field
+        function generateStars() {
+            const svg = document.getElementById('starfield');
+            const width = svg.parentElement.offsetWidth;
+            const height = svg.parentElement.offsetHeight;
+
+            svg.setAttribute('width', width);
+            svg.setAttribute('height', height);
+
+            // Stars above
+            const STARS = [
+                { x: 0.35, y: 0.28 },
+                { x: 0.42, y: 0.22 },
+                { x: 0.50, y: 0.19 },
+                { x: 0.58, y: 0.22 },
+                { x: 0.65, y: 0.27 },
+                { x: 0.70, y: 0.34 },
+                { x: 0.29, y: 0.35 },
+            ];
+
+            // Seeded randomization for stars
+            function seededRandom(seed) {
+                return function() {
+                    seed = (seed * 1664525 + 1013904223) & 0xffffffff;
+                    return (seed >>> 0) / 0xffffffff;
+                };
+            }
+
+            const rand = seededRandom(Math.floor(Math.random()*(100-10+1))+10);
+
+            // Background stars
+            const count = 160;
+            const tooClose = (x, y) =>
+                STARS.some(s => Math.abs(s.x - x / width) < 0.04 && Math.abs(s.y - y / height) < 0.04);
+
+            let placed = 0;
+            let attempts = 0;
+
+            // Add style
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes dimTwinkle {
+                    0%, 100% { opacity: var(--base-op); }
+                    50% { opacity: calc(var(--base-op) * 0.3); }
+                }
+                @keyframes brightTwinkle {
+                    0%, 100% { opacity: 0.55; filter: drop-shadow(0 0 2px #c084fc); }
+                    40% { opacity: 1; filter: drop-shadow(0 0 5px #a855f7) drop-shadow(0 0 10px #7c3aed); }
+                    60% { opacity: 0.85; filter: drop-shadow(0 0 3px #c084fc); }
+                }
+            `;
+            svg.parentElement.appendChild(style);
+
+            while (placed < count && attempts < 2000) {
+                attempts++;
+                const x = rand() * width;
+                const y = rand() * height;
+                if (tooClose(x, y)) continue;
+
+                const size = rand() < 0.15 ? 1.5 : 1;
+                const delay = rand() * 6;
+                const duration = 2 + rand() * 4;
+                const opacity = 0.15 + rand() * 0.35;
+
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', size);
+                circle.setAttribute('fill', 'white');
+                circle.style.setProperty('--base-op', opacity);
+                circle.style.opacity = opacity;
+                circle.style.animation = `dimTwinkle ${duration}s ease-in-out ${delay}s infinite`;
+                svg.appendChild(circle);
+                placed++;
+            }
+
+            // Primary stars
+            STARS.forEach((s, i) => {
+                const isAlphecca = i === 2;
+                const delay = i * 0.4;
+                const radius = isAlphecca ? 2.5 : 1.8;
+                const fill = isAlphecca ? '#e9d5ff' : '#c4b5fd';
+
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', s.x * width);
+                circle.setAttribute('cy', s.y * height);
+                circle.setAttribute('r', radius);
+                circle.setAttribute('fill', fill);
+                circle.style.animation = `brightTwinkle ${isAlphecca ? 2.2 : 3}s ease-in-out ${delay}s infinite`;
+                svg.appendChild(circle);
+                svg.setAttribute('transform', 'rotate(123)')
+            });
+        }
+
+        // Form handling
+        const form = document.getElementById('passphrase-form');
+        const input = document.getElementById('passphrase-input');
+        const errorDiv = document.getElementById('error-message');
+        const PASSPHRASE = 'northern cross';
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value.toLowerCase().trim() === PASSPHRASE) {
+                window.location.href = '/inner-circle/content';
+            } else {
+                errorDiv.style.visibility = '';
+                setTimeout(() => {
+                    errorDiv.style.visibility = 'hidden';
+                }, 2000);
+            }
+        });
+
+        // Generate stars on load
+        window.addEventListener('load', generateStars);
+        // window.addEventListener('resize', generateStars);
+    </script>
+</body>
+</html>
