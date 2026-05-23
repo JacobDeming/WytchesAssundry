@@ -270,13 +270,13 @@
 
             // Stars above
             const STARS = [
-                { x: 0.35, y: 0.28 },
-                { x: 0.42, y: 0.22 },
-                { x: 0.50, y: 0.19 },
-                { x: 0.58, y: 0.22 },
-                { x: 0.65, y: 0.27 },
-                { x: 0.70, y: 0.34 },
-                { x: 0.29, y: 0.35 },
+                { x: 0.73, y: 0.44 },
+                { x: 0.81, y: 0.55 },
+                { x: 0.80, y: 0.65 },
+                { x: 0.75, y: 0.73 },
+                { x: 0.65, y: 0.74 },
+                { x: 0.57, y: 0.70 },
+                { x: 0.54, y: 0.57 },
             ];
 
             // Seeded randomization for stars
@@ -296,21 +296,6 @@
 
             let placed = 0;
             let attempts = 0;
-
-            // Add style
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes dimTwinkle {
-                    0%, 100% { opacity: var(--base-op); }
-                    50% { opacity: calc(var(--base-op) * 0.3); }
-                }
-                @keyframes brightTwinkle {
-                    0%, 100% { opacity: 0.55; filter: drop-shadow(0 0 2px #c084fc); }
-                    40% { opacity: 1; filter: drop-shadow(0 0 5px #a855f7) drop-shadow(0 0 10px #7c3aed); }
-                    60% { opacity: 0.85; filter: drop-shadow(0 0 3px #c084fc); }
-                }
-            `;
-            svg.parentElement.appendChild(style);
 
             while (placed < count && attempts < 2000) {
                 attempts++;
@@ -338,18 +323,19 @@
             // Primary stars
             STARS.forEach((s, i) => {
                 const isAlphecca = i === 2;
-                const delay = i * 0.4;
-                const radius = isAlphecca ? 2.5 : 1.8;
-                const fill = isAlphecca ? '#e9d5ff' : '#c4b5fd';
+                const delay = rand() * 6;
+                const duration = 2 + rand() * 4;
+                const opacity = isAlphecca ? 1 : 0.35 + rand() * 0.35;
+                const size = isAlphecca ? 1.2 : 1;
 
                 const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 circle.setAttribute('cx', s.x * width);
                 circle.setAttribute('cy', s.y * height);
-                circle.setAttribute('r', radius);
-                circle.setAttribute('fill', fill);
-                circle.style.animation = `brightTwinkle ${isAlphecca ? 2.2 : 3}s ease-in-out ${delay}s infinite`;
+                circle.setAttribute('r', size);
+                circle.setAttribute('fill', 'white');
+                circle.style.opacity = opacity;
+                circle.style.animation = `brightTwinkle ${isAlphecca ? 2.2 : duration}s ease-in-out ${delay}s infinite`;
                 svg.appendChild(circle);
-                svg.setAttribute('transform', 'rotate(123)')
             });
         }
 
@@ -357,7 +343,7 @@
         const form = document.getElementById('passphrase-form');
         const input = document.getElementById('passphrase-input');
         const errorDiv = document.getElementById('error-message');
-        const PASSPHRASE = 'northern cross';
+        const PASSPHRASE = 'corona borealis';
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
