@@ -18,6 +18,7 @@
   --text: #e2d9f3;
   --text-muted: #7c6a9e;
   --border: #5b3d8a;
+  --WARNING: #930205;
   --radius: 0px;
 }
 
@@ -51,7 +52,6 @@ body {
   background-color: var(--bg-phase1);
   border-left: 4px solid var(--purple);
   border-right: 4px solid var(--purple);
-  min-height: 100vh;
   box-shadow: 0 0 40px rgba(139, 63, 200, 0.3);
 }
 
@@ -244,6 +244,14 @@ h3 {
   font-size: 0.88rem;
   color: var(--text);
   line-height: 1.7;
+}
+
+.simple-text {
+  font-family: 'Courier New', Courier, monospace;
+  text-indent: 40px;
+  font-size: 0.85rem;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 .body-text strong {

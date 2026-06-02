@@ -7,49 +7,64 @@
   <title>WYTCHES — Marble Basin, Washington</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap"
     rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/CSS/styles.css">
   <style>
-    @media (min-width: 480px) {
+
+    @media (min-width: 1080px) {
       .shoppe-grid {
         display: grid;
         gap: 10px;
         text-align: left;
         margin-top: 4px;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
       }
-
-      .shoppe-card {
-        padding: 10px;
+      .sidebar{
+        display: block;
       }
+    }
 
-      .shoppe-card .title {
-        font-family: "Courier Prime", monospace;
-        font-size: 0.82rem;
-        color: var(--gold-lt);
-        margin-bottom: 4px;
-        text-align: center;
-        
+
+    @media screen and (min-width: 761px) and (max-width: 1080px) {
+      .shoppe-grid {
+        display: grid;
+        gap: 10px;
+        text-align: left;
+        margin-top: 4px;
+        grid-template-columns: 1fr 1fr 1fr;
       }
-
-      .shoppe-card .desc {
-        font-family: "Courier Prime", monospace;
-        font-size: 0.72rem;
-        color: var(--gold-lt);
-        text-align: center;
+      .sidebar{
+        display: none;
       }
+    }
 
-      .shoppe-card .pricing{
-        font-family: "Courier Prime", monospace;
-        font-size: 0.76rem;
-        color: var(--text);
-        text-align: center;
+    @media screen and (min-width: 481px) and (max-width: 760px) {
+      .shoppe-grid {
+        display: grid;
+        gap: 10px;
+        text-align: left;
+        margin-top: 4px;
+        grid-template-columns: 1fr 1fr;
       }
-
-      .shoppe-card .pricing::before{
-        content:"$"
+      .sidebar {
+        display: none;
       }
+    }
 
-      .phase1 {
+    @media (max-width: 480px){
+      .shoppe-grid{
+        display: grid;
+        gap:5px;
+        text-align: left;
+        margin-top: 5px;
+        grid-template-columns: auto;
+      }
+      .sidebar{
+        display: none;
+      }
+    }
+
+    .phase1 {
         background-color: var(--bg-phase1);
         border: 3px outset var(--border);
       }
@@ -78,11 +93,65 @@
         background-color: var(--bg-phase1);
         border: 3px outset var(--border);
       }
-    }
+
+      .shoppe-card {
+        padding: 10px;
+        height: auto;
+      }
+
+      .shoppe-card .title {
+        font-family: "Courier Prime", monospace;
+        font-size: 0.82rem;
+        color: var(--gold-lt);
+        margin-bottom: 4px;
+        text-align: center;  
+      }
+
+      .shoppe-card .desc {
+        font-family: "Courier Prime", monospace;
+        font-size: 0.72rem;
+        color: var(--gold-lt);
+        text-align: center;
+      }
+
+      .shoppe-card .WARNING {
+        font-family: "Special Gothic Condensed One", sans-serif;
+        font-size: 1rem;
+        color: var(--WARNING);
+        text-align: center;
+      }
+
+      .shoppe-card .pricing{
+        font-family: "Courier Prime", monospace;
+        font-size: 0.76rem;
+        color: var(--text);
+        text-align: center;
+      }
+
+      .shoppe-card .pricing::before{
+        content:"$"
+      }
+
+      .sidebar {
+        position: fixed;
+        background-color: var(--bg);
+      }
   </style>
 </head>
 
 <body>
+
+  <div class="sidebar">
+    <h1 style="text-align: center;">Cart</h1>
+    <div class="shoppe-card phase1">
+      <p class="title">✦ Aconite ✦</p>
+      <p class="pricing">5.45</p>
+      <p class="WARNING">DO NOT CONSUME</p>
+      <p class="desc">Water Magick</p>
+      <p class="desc">Banishes Evil Energies</p>
+      <p class="desc">Invisibility</p>
+    </div>
+  </div>
   <div class="wrapper">
 
     <header>
@@ -94,7 +163,7 @@
           style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
       </div>
       <h1 class="glow">
-        <a href__="index.html">✦ WYTCHES ✦</a>
+        <a href="index.html">✦ WYTCHES ✦</a>
       </h1>
       <p class="sub">~ Marble Basin, Washington ~</p>
       <p class="sub">"Where the Veil is Thin"</p>
@@ -129,10 +198,6 @@
     </nav>
 
     <main>
-
-      <!-- Blink notice -->
-      <p class="blink-notice">★★★ NEW! Samhain Collection Now Available! ★★★</p>
-
       <!-- Crystals section -->
       <div class="box-inset">
         <h3>~ ROUGH GEMSTONES ~</h3>
@@ -141,7 +206,7 @@
             <p class="title">✦ Moss Agate ✦</p>
             <p class="pricing">12.99</p>
             <p class="desc">Enhances Luck & Strength</p>
-            <p class="desc">Affects Gardening and Weather</p>
+            <p class="desc">Weather & Nature Magick</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Amethyst ✦</p>
@@ -159,24 +224,24 @@
             <p class="title">✦ Bloodstone ✦</p>
             <p class="pricing">13.99</p>
             <p class="desc">Promotes Health & Courage</p>
-            <p class="desc">Perfect For Those In Conflict</p>
+            <p class="desc">Helps Those In Conflict</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Carnelian ✦</p>
             <p class="pricing">15.99</p>
-            <p class="desc">Enhances Confidence & Focus</p>
+            <p class="desc">Confidence & Focus</p>
             <p class="desc">Helps Wishes Come True</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Citrine ✦</p>
             <p class="pricing">12.99</p>
-            <p class="desc">Promotes Joy and Positivity</p>
-            <p class="desc">Brings Good Things To User</p>
+            <p class="desc">Brings Joy & Positivity</p>
+            <p class="desc">Promotes Positive Karma</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Fluorite ✦</p>
             <p class="pricing">14.99</p>
-            <p class="desc">Stone of Truth & Intelligence</p>
+            <p class="desc">Strengthens Intelligence</p>
             <p class="desc">Unlocks Hidden Trutths</p>
           </div>
           <div class="shoppe-card phase1">
@@ -194,8 +259,8 @@
           <div class="shoppe-card phase1">
             <p class="title">✦ Labradorite ✦</p>
             <p class="pricing">13.99</p>
-            <p class="desc">Enhances Imagination,</p>
-            <p class="desc">Divination, & Transformation</p>
+            <p class="desc">Unlocks Creativity</p>
+            <p class="desc">Transformative Properties</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Lapis Lazuli ✦</p>
@@ -237,7 +302,7 @@
             <p class="title">✦ Opal ✦</p>
             <p class="pricing">38.95</p>
             <p class="desc">A Gentle Healing Stone</p>
-            <p class="desc">Posses Power of All Elements</p>
+            <p class="desc">Empowers All Elements</p>
           </div>
           <div class="shoppe-card phase1">
             <p class="title">✦ Petrified Wood ✦</p>
@@ -261,79 +326,155 @@
             <p class="title">✦ Ruby ✦</p>
             <p class="pricing">47.99</p>
             <p class="desc">Enhances Luck and Wealth</p>
-            <p class="desc">Great For Decision Making</p>
+            <p class="desc">Perfect For Fire Magick</p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title">✦ Sapphire ✦</p>
+            <p class="pricing">89.95</p>
+            <p class="desc">Seeker of Knowledge</p>
+            <p class="desc">Used in Water Magick</p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title">✦ Tiger's Eye ✦</p>
+            <p class="pricing">14.50</p>
+            <p class="desc">Enhances Ferocity</p>
+            <p class="desc">Used in Earth Magick</p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title">✦ Tourmaline ✦</p>
+            <p class="pricing">16.95</p>
+            <p class="desc">Protective Stone For Rituals</p>
+            <p class="desc">Boosts Self-Confidence</p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title">✦ Turquosie ✦</p>
+            <p class="pricing">21.99</p>
+            <p class="desc">Reconnect With Sense of Self</p>
+            <p class="desc">Used in Sky Magick</p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title">✦ Unakite ✦</p>
+            <p class="pricing">17.95</p>
+            <p class="desc">Harmony Between People</p>
+            <p class="desc">Empowers Friendships</p>
           </div>
         </div>
       </div>
 
       <div class="box-inset">
-        <h3>~ HERBS & INCENSE ~</h3>
+        <h3>~ HERBS & SPICES ~</h3>
         <div class="shoppe-grid">
           <div class="shoppe-card phase1">
-            <p class="title">✦ Crystals &amp; Gemstones</p>
-            <p class="desc">Hand-selected from around the world</p>
+            <p class="title">✦ Aconite ✦</p>
+            <p class="pricing">5.45</p>
+            <p class="WARNING">DO NOT CONSUME</p>
+            <p class="desc">Water Magick</p>
+            <p class="desc">Banishes Evil Energies</p>
+            <p class="desc">Invisibility</p>
           </div>
           <div class="shoppe-card phase1">
-            <p class="title">✦ Herbs &amp; Incense</p>
-            <p class="desc">Dried, bundled, and loose leaf varieties</p>
+            <p class="title">✦ Agrimony ✦</p>
+            <p class="pricing">2.15</p>
+            <p class="WARNING"></p>
+            <p class="desc">Overcoming Fear</p>
+            <p class="desc">Dispell Negative Emotions</p>
+            <p class="desc">Reversing Spells</p>
           </div>
           <div class="shoppe-card phase1">
-            <p class="title">✦ Tarot &amp; Divination</p>
-            <p class="desc">Decks, pendulums, scrying mirrors</p>
+            <p class="title">✦ Alfalfa ✦</p>
+            <p class="pricing">2.40</p>
+            <p class="desc">Prosperity</p>
+            <p class="desc">Money</p>
+            <p class="desc">Wealth</p>
           </div>
           <div class="shoppe-card phase1">
-            <p class="title">✦ Ritual Candles</p>
-            <p class="desc">Dressed, anointed, and spell-ready</p>
+            <p class="title">✦ Allspice Berries ✦</p>
+            <p class="pricing">2.75</p>
+            <p class="desc">Obtaining Treasure</p>
+            <p class="desc">Attracts Luck</p>
+            <p class="desc">Provides Healing</p>
           </div>
           <div class="shoppe-card phase1">
-            <p class="title">✦ Books &amp; Grimoires</p>
-            <p class="desc">Rare and modern esoteric texts</p>
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
           </div>
           <div class="shoppe-card phase1">
-            <p class="title">✦ Statuary &amp; Altar Tools</p>
-            <p class="desc">Athames, chalices, cauldrons &amp; more</p>
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+          </div>
+          <div class="shoppe-card phase1">
+            <p class="title"></p>
+            <p class="pricing"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
+            <p class="desc"></p>
           </div>
         </div>
       </div>
 
       <div class="retro-hr"></div>
-
-      <!-- Store hours -->
-      <div class="box-raised">
-        <h3>~ Store Hours ~</h3>
-        <table class="hours-table">
-          <tr>
-            <td>Mondays</td>
-            <td>CLOSED</td>
-          </tr>
-          <tr>
-            <td>Tuesdays & Thursdays</td>
-            <td>1:00pm &ndash; 3:00pm</td>
-          </tr>
-          <tr>
-            <td>Wednesdays & Fridays</td>
-            <td>9:00am &ndash; 6:00pm</td>
-          </tr>
-          <tr>
-            <td>Saturdays & Sundays</td>
-            <td>10:00am &ndash; 5:00pm</td>
-          </tr>
-        </table>
-        <p class="hours-note">&#9734; Extended hours during sabbats &#9734;</p>
-        <p class="hours-note">&#9734; Shorter hours during the full moon &#9734;</p>
-      </div>
-
-      <!-- Twinkling stars -->
-      <div class="star-row">
-        <span class="star" style="animation-delay:0s">✦</span>
-        <span class="star" style="animation-delay:0.3s">✦</span>
-        <span class="star" style="animation-delay:0.6s">✦</span>
-        <span class="star" style="animation-delay:0.9s">✦</span>
-        <span class="star" style="animation-delay:1.2s">✦</span>
-      </div>
-    </main>
-
-    <div class="retro-hr"></div>
 
     <footer>
 
@@ -346,9 +487,9 @@
 
       <div class="footer-links">
         <span>[ </span>
-        <a href__="index.html">Home</a>
+        <a href="index.html">Home</a>
         <span class="sep">|</span>
-        <a href__="shoppe.html">Shoppe</a>
+        <a href="shoppe.html">Shoppe</a>
         <span class="sep">|</span>
         <a href__="about.html">About</a>
         <span class="sep">|</span>
@@ -373,6 +514,33 @@
       document.getElementById('counter').textContent =
         String(count).padStart(6, '0');
     })();
+
+    function scaleCart(){  
+      var sidebar = document.querySelector('.sidebar')
+      var first_shoppe_area_info = document.getElementsByClassName('box-inset')[0].getBoundingClientRect()
+      var page_top_to_shoppe_area = window.innerHeight-first_shoppe_area_info.top
+      var last_shoppe_area_info = document.getElementsByClassName('box-inset')[1].getBoundingClientRect()
+      var last_shoppe_to_page_bottom = document.documentElement.scrollHeight-(last_shoppe_area_info.bottom + window.scrollY);
+      console.log(page_top_to_shoppe_area)
+      console.log(last_shoppe_to_page_bottom)
+      sidebar.setAttribute('style','top:'+first_shoppe_area_info.top+'px; width:'+first_shoppe_area_info.left+'px;height:'+(page_top_to_shoppe_area-last_shoppe_to_page_bottom)+'px;')
+    }
+
+  window.addEventListener('load', ()=>{
+    console.log("Got in here")
+    if('history' in window && 'scrollRestoration' in history){
+      history.scrollRestoration='manual';
+    }
+    window.scrollTo(0,0)
+    scaleCart()
+    }
+  )
+
+  window.addEventListener('resize', ()=>{
+    scaleCart()
+    }
+  )
+
   </script>
 
 </body>
