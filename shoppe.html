@@ -5,13 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WYTCHES — Marble Basin, Washington</title>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/CSS/styles.css">
   <style>
-
-    @media (min-width: 1080px) {
+    @media (min-width: 761px) {
       .shoppe-grid {
         display: grid;
         gap: 10px;
@@ -19,21 +17,8 @@
         margin-top: 4px;
         grid-template-columns: 1fr 1fr 1fr;
       }
-      .sidebar{
-        display: block;
-      }
-    }
 
-
-    @media screen and (min-width: 761px) and (max-width: 1080px) {
-      .shoppe-grid {
-        display: grid;
-        gap: 10px;
-        text-align: left;
-        margin-top: 4px;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-      .sidebar{
+      .sidebar {
         display: none;
       }
     }
@@ -46,121 +31,153 @@
         margin-top: 4px;
         grid-template-columns: 1fr 1fr;
       }
+
       .sidebar {
         display: none;
       }
     }
 
-    @media (max-width: 480px){
-      .shoppe-grid{
+    @media (max-width: 480px) {
+      .shoppe-grid {
         display: grid;
-        gap:5px;
+        gap: 5px;
         text-align: left;
         margin-top: 5px;
         grid-template-columns: auto;
       }
-      .sidebar{
-        display: none;
-      }
     }
 
-    .phase1 {
-        background-color: var(--bg-phase1);
-        border: 3px outset var(--border);
-      }
+    /* Styling for unselected shoppe cards */
+    .shoppe-card {
+      background-color: var(--bg-phase1);
+      border: 3px outset var(--border);
+      padding: 10px;
+      height: auto;
+      cursor: pointer;
+    }
 
-      .phase1:hover{
-        background-color: var(--bg-phase2);
-        border: 3px outset var(--border);
-      }
+    .shoppe-card:hover {
+      background-color: var(--bg-phase2);
+      border: 3px outset var(--border);
+    }
 
-      .phase2{
-        background-color: var(--bg-phase2);
-        border: 3px outset var(--border);
-      }
+    .shoppe-card * {
+      pointer-events: none;
+    }
 
-      .phase2:hover{
-        background-color: var(--bg-phase3);
-        border: 3px outset var(--border);
-      }
+    .shoppe-card .title {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      margin-bottom: 4px;
+      text-align: center;
+    }
 
-      .phase3{
-        background-color: var(--bg-phase3);
-        border: 3px outset var(--border);
-      }
+    .shoppe-card .desc {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.72rem;
+      color: var(--gold-lt);
+      text-align: center;
+    }
 
-      .phase3:hover{
-        background-color: var(--bg-phase1);
-        border: 3px outset var(--border);
-      }
+    .shoppe-card .WARNING {
+      font-family: "Special Gothic Condensed One", sans-serif;
+      font-size: 1rem;
+      color: var(--WARNING);
+      text-align: center;
+    }
 
-      .shoppe-card {
-        padding: 10px;
-        height: auto;
-      }
+    .shoppe-card .pricing {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.76rem;
+      color: var(--text);
+      text-align: center;
+    }
 
-      .shoppe-card .title {
-        font-family: "Courier Prime", monospace;
-        font-size: 0.82rem;
-        color: var(--gold-lt);
-        margin-bottom: 4px;
-        text-align: center;  
-      }
+    .shoppe-card .pricing::before {
+      content: "$"
+    }
 
-      .shoppe-card .desc {
-        font-family: "Courier Prime", monospace;
-        font-size: 0.72rem;
-        color: var(--gold-lt);
-        text-align: center;
-      }
+    /* Styling for selected shoppe cards */
+    .shoppe-card-cart {
+      background-color: var(--gold);
+      border: 3px outset var(--gold-lt);
+      padding: 10px;
+      height: auto;
+      cursor: pointer;
+    }
 
-      .shoppe-card .WARNING {
-        font-family: "Special Gothic Condensed One", sans-serif;
-        font-size: 1rem;
-        color: var(--WARNING);
-        text-align: center;
-      }
+    .shoppe-card-cart:hover {
+      background-color: var(--gold-lt);
+    }
 
-      .shoppe-card .pricing{
-        font-family: "Courier Prime", monospace;
-        font-size: 0.76rem;
-        color: var(--text);
-        text-align: center;
-      }
+    .shoppe-card-cart * {
+      pointer-events: none;
+    }
 
-      .shoppe-card .pricing::before{
-        content:"$"
-      }
+    .shoppe-card-cart .title {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.82rem;
+      color: var(--bg);
+      margin-bottom: 4px;
+      text-align: center;
+      font-weight: bold;
+    }
 
-      .sidebar {
-        position: fixed;
-        background-color: var(--bg);
-      }
+    .shoppe-card-cart .desc {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.72rem;
+      color: var(--bg);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .shoppe-card-cart .WARNING {
+      font-family: "Special Gothic Condensed One", sans-serif;
+      font-size: 1rem;
+      color: var(--WARNING);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .shoppe-card-cart .pricing {
+      font-family: "Courier Prime", monospace;
+      font-size: 0.76rem;
+      color: var(--bg);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .shoppe-card-cart .pricing::before {
+      content: "$"
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    summary h3:hover {
+      text-decoration: underline overline;
+      color: var(--gold-lt);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="sidebar">
-    <h1 style="text-align: center;">Cart</h1>
-    <div class="shoppe-card phase1">
-      <p class="title">✦ Aconite ✦</p>
-      <p class="pricing">5.45</p>
-      <p class="WARNING">DO NOT CONSUME</p>
-      <p class="desc">Water Magick</p>
-      <p class="desc">Banishes Evil Energies</p>
-      <p class="desc">Invisibility</p>
-    </div>
-  </div>
+
   <div class="wrapper">
 
     <header>
       <div class="icon-row">
-        <span
-          style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
         <span style="color:var(--purple-lt); font-size:1.3rem;">☽</span>
-        <span
-          style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
       </div>
       <h1 class="glow">
         <a href="index.html">✦ WYTCHES ✦</a>
@@ -168,11 +185,9 @@
       <p class="sub">~ Marble Basin, Washington ~</p>
       <p class="sub">"Where the Veil is Thin"</p>
       <div class="symbol-row">
-        <span
-          style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
         <span>&#9789; &#9734; &#9790;</span>
-        <span
-          style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+        <span style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
       </div>
     </header>
 
@@ -198,310 +213,387 @@
     </nav>
 
     <main>
-      <!-- Crystals section -->
+      <!-- Rough Gemstones section -->
       <div class="box-inset">
-        <h3>~ ROUGH GEMSTONES ~</h3>
-        <div class="shoppe-grid">
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Moss Agate ✦</p>
-            <p class="pricing">12.99</p>
-            <p class="desc">Enhances Luck & Strength</p>
-            <p class="desc">Weather & Nature Magick</p>
+        <details open>
+          <summary>
+            <h3>~ ROUGH GEMSTONES ~</h3>
+          </summary>
+          <div class="shoppe-grid">
+            <div class="shoppe-card">
+              <p class="title">✦ Moss Agate ✦</p>
+              <p class="pricing">12.99</p>
+              <p class="desc">Enhances Luck & Strength</p>
+              <p class="desc">Weather & Nature Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Amethyst ✦</p>
+              <p class="pricing">16.99</p>
+              <p class="desc">Calming Stone</p>
+              <p class="desc">Enhances Psychic Abilities</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Aventurite ✦</p>
+              <p class="pricing">21.99</p>
+              <p class="desc">Enhances Luck and Wealth</p>
+              <p class="desc">Great For Decision Making</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Bloodstone ✦</p>
+              <p class="pricing">13.99</p>
+              <p class="desc">Promotes Health & Courage</p>
+              <p class="desc">Helps Those In Conflict</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Carnelian ✦</p>
+              <p class="pricing">15.99</p>
+              <p class="desc">Confidence & Focus</p>
+              <p class="desc">Helps Wishes Come True</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Citrine ✦</p>
+              <p class="pricing">12.99</p>
+              <p class="desc">Brings Joy & Positivity</p>
+              <p class="desc">Promotes Positive Karma</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Fluorite ✦</p>
+              <p class="pricing">14.99</p>
+              <p class="desc">Strengthens Intelligence</p>
+              <p class="desc">Unlocks Hidden Trutths</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Garnet ✦</p>
+              <p class="pricing">15.95</p>
+              <p class="desc">Increases Spell Power</p>
+              <p class="desc">Loyal and Protective Stone</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Red Jasper ✦</p>
+              <p class="pricing">10.99</p>
+              <p class="desc">Grounding and Stabilizing</p>
+              <p class="desc">Balances Emotions</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Labradorite ✦</p>
+              <p class="pricing">13.99</p>
+              <p class="desc">Unlocks Creativity</p>
+              <p class="desc">Transformative Properties</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Lapis Lazuli ✦</p>
+              <p class="pricing">14.50</p>
+              <p class="desc">Opens Psychic Abilities</p>
+              <p class="desc">Puts a Stop to Things</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Lodestone ✦</p>
+              <p class="pricing">24.99</p>
+              <p class="desc">Attracts Wanted Outcomes</p>
+              <p class="desc">Great For Decision Making</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Malachite ✦</p>
+              <p class="pricing">25.95</p>
+              <p class="desc">Protective Against Harm</p>
+              <p class="desc">Changes Negative to Positive</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Rainbow Moonstone ✦</p>
+              <p class="pricing">16.99</p>
+              <p class="desc">Heightens Intuition</p>
+              <p class="desc">Strengthens Water Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Onyx ✦</p>
+              <p class="pricing">12.99</p>
+              <p class="desc">Unlucky Stone</p>
+              <p class="desc">Reinforces Self-Discipline</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Sardonyx ✦</p>
+              <p class="pricing">17.99</p>
+              <p class="desc">Negates Downsides of Onyx</p>
+              <p class="desc">Stabilizes Other Stones</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Opal ✦</p>
+              <p class="pricing">38.95</p>
+              <p class="desc">A Gentle Healing Stone</p>
+              <p class="desc">Empowers All Elements</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Petrified Wood ✦</p>
+              <p class="pricing">20.95</p>
+              <p class="desc">Symbolizes Long Life</p>
+              <p class="desc">Perfect for Time Magicks</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Pyrite ✦</p>
+              <p class="pricing">21.99</p>
+              <p class="desc">Attracts Wealth and Luck</p>
+              <p class="desc">Used In Spells for Trickery</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Clear Quartz ✦</p>
+              <p class="pricing">34.99</p>
+              <p class="desc">Amplifier for All Energies</p>
+              <p class="desc">Strengthens Spellcasting</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Ruby ✦</p>
+              <p class="pricing">47.99</p>
+              <p class="desc">Enhances Luck and Wealth</p>
+              <p class="desc">Perfect For Fire Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Sapphire ✦</p>
+              <p class="pricing">89.95</p>
+              <p class="desc">Seeker of Knowledge</p>
+              <p class="desc">Used in Water Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Tiger's Eye ✦</p>
+              <p class="pricing">14.50</p>
+              <p class="desc">Enhances Ferocity</p>
+              <p class="desc">Used in Earth Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Tourmaline ✦</p>
+              <p class="pricing">16.95</p>
+              <p class="desc">Protective Stone For Rituals</p>
+              <p class="desc">Boosts Self-Confidence</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Turquosie ✦</p>
+              <p class="pricing">21.99</p>
+              <p class="desc">Reconnect With Sense of Self</p>
+              <p class="desc">Used in Sky Magick</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Unakite ✦</p>
+              <p class="pricing">17.95</p>
+              <p class="desc">Harmony Between People</p>
+              <p class="desc">Empowers Friendships</p>
+            </div>
           </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Amethyst ✦</p>
-            <p class="pricing">16.99</p>
-            <p class="desc">Calming Stone</p>
-            <p class="desc">Enhances Psychic Abilities</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Aventurite ✦</p>
-            <p class="pricing">21.99</p>
-            <p class="desc">Enhances Luck and Wealth</p>
-            <p class="desc">Great For Decision Making</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Bloodstone ✦</p>
-            <p class="pricing">13.99</p>
-            <p class="desc">Promotes Health & Courage</p>
-            <p class="desc">Helps Those In Conflict</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Carnelian ✦</p>
-            <p class="pricing">15.99</p>
-            <p class="desc">Confidence & Focus</p>
-            <p class="desc">Helps Wishes Come True</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Citrine ✦</p>
-            <p class="pricing">12.99</p>
-            <p class="desc">Brings Joy & Positivity</p>
-            <p class="desc">Promotes Positive Karma</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Fluorite ✦</p>
-            <p class="pricing">14.99</p>
-            <p class="desc">Strengthens Intelligence</p>
-            <p class="desc">Unlocks Hidden Trutths</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Garnet ✦</p>
-            <p class="pricing">15.95</p>
-            <p class="desc">Increases Spell Power</p>
-            <p class="desc">Loyal and Protective Stone</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Red Jasper ✦</p>
-            <p class="pricing">10.99</p>
-            <p class="desc">Grounding and Stabilizing</p>
-            <p class="desc">Balances Emotions</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Labradorite ✦</p>
-            <p class="pricing">13.99</p>
-            <p class="desc">Unlocks Creativity</p>
-            <p class="desc">Transformative Properties</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Lapis Lazuli ✦</p>
-            <p class="pricing">14.50</p>
-            <p class="desc">Opens Psychic Abilities</p>
-            <p class="desc">Puts a Stop to Things</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Lodestone ✦</p>
-            <p class="pricing">24.99</p>
-            <p class="desc">Attracts Wanted Outcomes</p>
-            <p class="desc">Great For Decision Making</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Malachite ✦</p>
-            <p class="pricing">25.95</p>
-            <p class="desc">Protective Against Harm</p>
-            <p class="desc">Changes Negative to Positive</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Rainbow Moonstone ✦</p>
-            <p class="pricing">16.99</p>
-            <p class="desc">Heightens Intuition</p>
-            <p class="desc">Strengthens Water Magick</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Onyx ✦</p>
-            <p class="pricing">12.99</p>
-            <p class="desc">Unlucky Stone</p>
-            <p class="desc">Reinforces Self-Discipline</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Sardonyx ✦</p>
-            <p class="pricing">17.99</p>
-            <p class="desc">Negates Downsides of Onyx</p>
-            <p class="desc">Stabilizes Other Stones</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Opal ✦</p>
-            <p class="pricing">38.95</p>
-            <p class="desc">A Gentle Healing Stone</p>
-            <p class="desc">Empowers All Elements</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Petrified Wood ✦</p>
-            <p class="pricing">20.95</p>
-            <p class="desc">Symbolizes Long Life</p>
-            <p class="desc">Perfect for Time Magicks</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Pyrite ✦</p>
-            <p class="pricing">21.99</p>
-            <p class="desc">Attracts Wealth and Luck</p>
-            <p class="desc">Used In Spells for Trickery</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Clear Quartz ✦</p>
-            <p class="pricing">34.99</p>
-            <p class="desc">Amplifier for All Energies</p>
-            <p class="desc">Strengthens Spellcasting</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Ruby ✦</p>
-            <p class="pricing">47.99</p>
-            <p class="desc">Enhances Luck and Wealth</p>
-            <p class="desc">Perfect For Fire Magick</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Sapphire ✦</p>
-            <p class="pricing">89.95</p>
-            <p class="desc">Seeker of Knowledge</p>
-            <p class="desc">Used in Water Magick</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Tiger's Eye ✦</p>
-            <p class="pricing">14.50</p>
-            <p class="desc">Enhances Ferocity</p>
-            <p class="desc">Used in Earth Magick</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Tourmaline ✦</p>
-            <p class="pricing">16.95</p>
-            <p class="desc">Protective Stone For Rituals</p>
-            <p class="desc">Boosts Self-Confidence</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Turquosie ✦</p>
-            <p class="pricing">21.99</p>
-            <p class="desc">Reconnect With Sense of Self</p>
-            <p class="desc">Used in Sky Magick</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Unakite ✦</p>
-            <p class="pricing">17.95</p>
-            <p class="desc">Harmony Between People</p>
-            <p class="desc">Empowers Friendships</p>
-          </div>
-        </div>
+        </details>
       </div>
 
+      <!-- Herbs section -->
       <div class="box-inset">
-        <h3>~ HERBS & SPICES ~</h3>
-        <div class="shoppe-grid">
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Aconite ✦</p>
-            <p class="pricing">5.45</p>
-            <p class="WARNING">DO NOT CONSUME</p>
-            <p class="desc">Water Magick</p>
-            <p class="desc">Banishes Evil Energies</p>
-            <p class="desc">Invisibility</p>
+        <details>
+          <summary>
+            <h3>~ HERBS & SPICES ~</h3>
+          </summary>
+          <div class="shoppe-grid">
+            <div class="shoppe-card">
+              <p class="title">✦ Aconite ✦</p>
+              <p class="pricing">5.45</p>
+              <p class="WARNING">DO NOT CONSUME</p>
+              <p class="desc">Water Magick</p>
+              <p class="desc">Banishes Evil Energies</p>
+              <p class="desc">Invisibility</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Agrimony ✦</p>
+              <p class="pricing">2.15</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Dream Work</p>
+              <p class="desc">Protection</p>
+              <p class="desc">Breaking Hexes</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Alfalfa ✦</p>
+              <p class="pricing">2.40</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Earth Magick</p>
+              <p class="desc">Prosperity</p>
+              <p class="desc">Debt Reduction</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Allspice Berries ✦</p>
+              <p class="pricing">2.75</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Fire Magick</p>
+              <p class="desc">Psychic Healing</p>
+              <p class="desc">Obtaining Treasure</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Alum Pieces ✦</p>
+              <p class="pricing">2.90</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Earth Magick</p>
+              <p class="desc">Stopping Gossip</p>
+              <p class="desc">Legal Matters</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Angelica Root ✦</p>
+              <p class="pricing">4.10</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Protective Magick</p>
+              <p class="desc">Fire Magick</p>
+              <p class="desc">Exorcism</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Anise Seed ✦</p>
+              <p class="pricing">1.90</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Air Magick</p>
+              <p class="desc">Wards Off Evil Eye</p>
+              <p class="desc">Prevents Bad Dreams</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title">✦ Arnica Flower ✦</p>
+              <p class="pricing">3.25</p>
+              <p class="WARNING">&nbsp;</p>
+              <p class="desc">Fire Magick</p>
+              <p class="desc">Psychic Powers</p>
+              <p class="desc">Wards of Thunderstorms</p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
           </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Agrimony ✦</p>
-            <p class="pricing">2.15</p>
-            <p class="WARNING"></p>
-            <p class="desc">Overcoming Fear</p>
-            <p class="desc">Dispell Negative Emotions</p>
-            <p class="desc">Reversing Spells</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Alfalfa ✦</p>
-            <p class="pricing">2.40</p>
-            <p class="desc">Prosperity</p>
-            <p class="desc">Money</p>
-            <p class="desc">Wealth</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title">✦ Allspice Berries ✦</p>
-            <p class="pricing">2.75</p>
-            <p class="desc">Obtaining Treasure</p>
-            <p class="desc">Attracts Luck</p>
-            <p class="desc">Provides Healing</p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-          <div class="shoppe-card phase1">
-            <p class="title"></p>
-            <p class="pricing"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-            <p class="desc"></p>
-          </div>
-        </div>
+        </details>
       </div>
 
-      <div class="retro-hr"></div>
-
-    <footer>
-
-      <p class="counter-label">
-        You are visitor number:
-        <span class="counter-display" id="counter">009731</span>
-      </p>
-
-      <p class="netscape-note">Best viewed in Netscape Navigator 3.0</p>
-
-      <div class="footer-links">
-        <span>[ </span>
-        <a href="index.html">Home</a>
-        <span class="sep">|</span>
-        <a href="shoppe.html">Shoppe</a>
-        <span class="sep">|</span>
-        <a href__="about.html">About</a>
-        <span class="sep">|</span>
-        <a href__="contact.html">Contact</a>
-        <span> ]</span>
+      <!-- Assundry Goods section -->
+      <div class="box-inset">
+        <details>
+          <summary>
+            <h3>~ ASSUNDRIES ~</h3>
+          </summary>
+          <div class="shoppe-grid">
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+            <div class="shoppe-card">
+              <p class="title"></p>
+              <p class="pricing"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+              <p class="desc"></p>
+            </div>
+          </div>
+        </details>
       </div>
-
-      <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
-      <p class="copyright" style="margin-top:4px;">Webmaster: Greg Kent</p>
-    </footer>
-
+    </main>
   </div>
+
+  <div class="retro-hr"></div>
+
+  <footer>
+    <p class="counter-label">
+      You are visitor number:
+      <span class="counter-display" id="counter">009731</span>
+    </p>
+
+    <p class="netscape-note">Best viewed in Netscape Navigator 3.0</p>
+
+    <div class="footer-links">
+      <span>[ </span>
+      <a href="index.html">Home</a>
+      <span class="sep">|</span>
+      <a href="shoppe.html">Shoppe</a>
+      <span class="sep">|</span>
+      <a href__="about.html">About</a>
+      <span class="sep">|</span>
+      <a href__="contact.html">Contact</a>
+      <span> ]</span>
+    </div>
+
+    <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
+    <p class="copyright" style="margin-top:4px;">Webmaster: Greg Kent</p>
+  </footer>
+  </div>
+
+  <div class="shoppe-footer"></div>
 
   <script>
     // Visitor counter — reads from localStorage so it persists across visits
@@ -515,34 +607,31 @@
         String(count).padStart(6, '0');
     })();
 
-    function scaleCart(){  
-      var sidebar = document.querySelector('.sidebar')
-      var first_shoppe_area_info = document.getElementsByClassName('box-inset')[0].getBoundingClientRect()
-      var page_top_to_shoppe_area = window.innerHeight-first_shoppe_area_info.top
-      var last_shoppe_area_info = document.getElementsByClassName('box-inset')[1].getBoundingClientRect()
-      var last_shoppe_to_page_bottom = document.documentElement.scrollHeight-(last_shoppe_area_info.bottom + window.scrollY);
-      console.log(page_top_to_shoppe_area)
-      console.log(last_shoppe_to_page_bottom)
-      sidebar.setAttribute('style','top:'+first_shoppe_area_info.top+'px; width:'+first_shoppe_area_info.left+'px;height:'+(page_top_to_shoppe_area-last_shoppe_to_page_bottom)+'px;')
-    }
+    let shoppeCart = [];
 
-  window.addEventListener('load', ()=>{
-    console.log("Got in here")
-    if('history' in window && 'scrollRestoration' in history){
-      history.scrollRestoration='manual';
-    }
-    window.scrollTo(0,0)
-    scaleCart()
-    }
-  )
+    document.addEventListener('click', (event) => {
+      if (event.target.matches('.shoppe-card')) {
+        const item = event.target.querySelector('.title');
+        shoppeCart.push(item.textContent.replace(/[^a-zA-Z0-9]/g, ""));
+        console.log(shoppeCart);
+        event.target.classList.replace('shoppe-card', 'shoppe-card-cart')
+      } else if (event.target.matches('.shoppe-card-cart')) {
+        const item = event.target.querySelector('.title');
+        const locationInList = shoppeCart.indexOf(item.textContent.replace(/[^a-zA-Z0-9]/g, ""))
+        if (locationInList > -1) {
+          shoppeCart.splice(locationInList, 1)
+          console.log(shoppeCart);
+        }
+        event.target.classList.replace('shoppe-card-cart', 'shoppe-card')
+      }
+    })
 
-  window.addEventListener('resize', ()=>{
-    scaleCart()
-    }
-  )
+
 
   </script>
 
 </body>
+<!-- witchyhour.com -->
+<!-- 13moons.com/collections/herbs -->
 
 </html>
