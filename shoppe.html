@@ -49,6 +49,9 @@
 
     /* Styling for unselected shoppe cards */
     .shoppe-card {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       background-color: var(--bg-phase1);
       border: 3px outset var(--border);
       padding: 10px;
@@ -100,6 +103,9 @@
 
     /* Styling for selected shoppe cards */
     .shoppe-card-cart {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       background-color: var(--gold);
       border: 3px outset var(--gold-lt);
       padding: 10px;
@@ -566,7 +572,7 @@
       </div>
     </main>
 
-  <div class="retro-hr"></div>
+    <div class="retro-hr"></div>
 
 
     <footer>
@@ -592,7 +598,7 @@
       <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
       <p class="copyright" style="margin-top:4px;">Webmaster: Greg Kent</p>
     </footer>
-    
+
     <div></div>
 
 
@@ -614,7 +620,7 @@
     })();
 
     let shoppeCart = {};
-    let totalCost = 0;
+    let totalCostInCents = 0;
 
     document.addEventListener('click', (event) => {
       // Clicking on a shoppe card that has not been added to cart before
@@ -622,41 +628,47 @@
         // Collect the item that was clicked
         const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
         // Add the cost of the item to the total cost of the cart
-        totalCost += parseFloat(event.target.querySelector('.pricing').textContent);
+        totalCostInCents += parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100)
         // Create the key and value for the item in the shoppeCart object
-        shoppeCart[item]=1
+        shoppeCart[item] = 1
         console.log(shoppeCart)
-        console.log(totalCost)
+        console.log(totalCostInCents)
         // Change the styling of the card
         event.target.classList.replace('shoppe-card', 'shoppe-card-cart')
         // Add " x1" to the price section
-        event.target.querySelector('.cart-amount').textContent = " x"+shoppeCart[item]
+        event.target.querySelector('.cart-amount').textContent = " x" + shoppeCart[item]
 
-      // Clicking on a shoppe card that has been added to cart before
+        // Clicking on a shoppe card that has been added to cart before
       } else if (event.target.matches('.shoppe-card-cart')) {
         // Collect the item that was clicked
         const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
         // Add the cost of the item to the total cost of the cart
-        totalCost += parseFloat(event.target.querySelector('.pricing').textContent);
+        totalCostInCents += parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100)
         // Modify the shoppeCart object
-        shoppeCart[item]+=1;
+        shoppeCart[item] += 1;
         console.log(shoppeCart)
-        console.log(totalCost)
+        console.log(totalCostInCents)
         // Add one to the "x" value in the price section
-        event.target.querySelector('.cart-amount').textContent = " x"+shoppeCart[item]
+        event.target.querySelector('.cart-amount').textContent = " x" + shoppeCart[item]
       }
     })
 
     document.addEventListener('contextmenu', (event) => {
-      event.preventDefault()
-      const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
-      totalCost -= parseFloat(event.target.querySelector('.pricing').textContent);
-      shoppeCart[item]-=1
-      if(shoppeCart[item]>0){
-        event.target.querySelector('.cart-amount').textContent = " x"+shoppeCart[item]
-      } else {
-        event.target.classList.replace('shoppe-card-cart', 'shoppe-card')
-        event.target.querySelector('.cart-amount').textContent = "";
+      if (event.target.matches('.shoppe-card-cart')) {
+        event.preventDefault()
+        const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
+        totalCostInCents -= parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100);
+        shoppeCart[item] -= 1
+        if (shoppeCart[item] > 0) {
+          event.target.querySelector('.cart-amount').textContent = " x" + shoppeCart[item]
+        } else {
+          event.target.classList.replace('shoppe-card-cart', 'shoppe-card')
+          event.target.querySelector('.cart-amount').textContent = "";
+        }
+        console.log(shoppeCart)
+        console.log(totalCostInCents)
+      } else if (event.target.matches('.shoppe-card')){
+        event.preventDefault();
       }
     })
 
