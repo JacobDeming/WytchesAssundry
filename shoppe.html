@@ -7,6 +7,7 @@
   <title>WYTCHES — Marble Basin, Washington</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
   <link rel="stylesheet" href="src/CSS/styles.css">
   <style>
     @media (min-width: 761px) {
@@ -45,6 +46,10 @@
         margin-top: 5px;
         grid-template-columns: auto;
       }
+    }
+
+    body{
+      padding-bottom: 150px;
     }
 
     /* Styling for unselected shoppe cards */
@@ -156,6 +161,54 @@
 
     .shoppe-card-cart .pricing::before {
       content: "$"
+    }
+
+    /* The Cart Footer */
+
+    #cart-footer{
+      position: fixed;
+      bottom: 0px;
+      left: 50%;
+      max-width: 760px;
+      width: 100%;
+      height:150px;
+      margin: 0 auto;
+      background-color: black;
+      border-right: 4px solid var(--purple);
+      border-left: 4px solid var(--purple);
+      border-bottom: 4px solid var(--purple);;
+      transform: translate(-50%);
+    }
+
+    #cart-footer .retro-hr{
+      margin: 0;
+    }
+
+    #cart-area{
+      height: 70%;
+      width: 50%;
+      margin: 0 auto;
+      background-color: var(--bg-phase1);
+      border: 3px inset var(--bg-phase2);
+      overflow: auto;
+    }
+
+    .item-in-cart:hover{
+      color: var(--WARNING);
+    }
+
+    #cart-button{
+      margin-top: 1px;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--gold);
+      border: 3px outset var(--gold-lt);
+    }
+
+    #cart-button:active {
+      background-color: var(--gold-lt);
     }
 
     summary {
@@ -597,15 +650,15 @@
 
       <p class="copyright">&copy; 1996 Wytches Occult Shoppe. All Rights Reserved.</p>
       <p class="copyright" style="margin-top:4px;">Webmaster: Greg Kent</p>
+
+      <div id="cart-footer">
+        <div class="retro-hr"></div>
+        <div id="cart-area"></div>
+        <button id="cart-button"><i class="material-icons">lock</i>LOCKED</button>
+      </div>
     </footer>
 
-    <div></div>
-
-
   </div>
-
-
-  <div class="shoppe-footer"></div>
 
   <script>
     // Visitor counter — reads from localStorage so it persists across visits
@@ -619,38 +672,73 @@
         String(count).padStart(6, '0');
     })();
 
-    let shoppeCart = {};
+    let shoppeCart = [];
     let totalCostInCents = 0;
 
     document.addEventListener('click', (event) => {
       // Clicking on a shoppe card that has not been added to cart before
       if (event.target.matches('.shoppe-card')) {
-        // Collect the item that was clicked
+        // Collect the name of the item that was clicked
         const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
         // Add the cost of the item to the total cost of the cart
         totalCostInCents += parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100)
-        // Create the key and value for the item in the shoppeCart object
-        shoppeCart[item] = 1
-        console.log(shoppeCart)
-        console.log(totalCostInCents)
+        // Create an object that contains the name and the price
+        const itemInCart = {
+          name: item,
+          amount: 1,
+          price: parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100)          
+        }
+        shoppeCart.push(itemInCart)
         // Change the styling of the card
         event.target.classList.replace('shoppe-card', 'shoppe-card-cart')
         // Add " x1" to the price section
-        event.target.querySelector('.cart-amount').textContent = " x" + shoppeCart[item]
+        event.target.querySelector('.cart-amount').textContent = " x1"
 
         // Clicking on a shoppe card that has been added to cart before
       } else if (event.target.matches('.shoppe-card-cart')) {
-        // Collect the item that was clicked
+        // Collect the name of the item that was clicked
         const item = event.target.querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "");
         // Add the cost of the item to the total cost of the cart
         totalCostInCents += parseInt((event.target.querySelector('.pricing').textContent.split(" x")[0]) * 100)
-        // Modify the shoppeCart object
-        shoppeCart[item] += 1;
-        console.log(shoppeCart)
-        console.log(totalCostInCents)
-        // Add one to the "x" value in the price section
-        event.target.querySelector('.cart-amount').textContent = " x" + shoppeCart[item]
-      }
+        // Modify the shoppeCart array
+        for(let itemObject of shoppeCart){
+          if (itemObject.name == item){
+            itemObject.amount+=1;
+            // Add one to the "x" value in the price section
+            event.target.querySelector('.cart-amount').textContent = " x" + itemObject.amount
+          }
+        }
+
+      // Clicking on an item that is in the cart
+      } else if (event.target.matches('.item-in-cart')){
+        // Collect the HTML for all of the items in the store
+        const shoppeCards = document.querySelectorAll(".shoppe-card-cart")
+        // Collect the name of the item that was clicked
+        const item = event.target.textContent.split(" ")[0]
+        // Loop through all of the items that are inside of the cart
+        for (let i=0; i<shoppeCart.length; i++){
+          // Checking to see which object matches the item that was clicked
+          if (item==shoppeCart[i].name){
+            // Looping through the HTML for all of the items in the store
+            for (let j=0; j<shoppeCards.length; j++){
+              // Checking the HTML for the items in the store to see which matches the item clicked in the cart
+              if (shoppeCart[i].name == shoppeCards[j].querySelector('.title').textContent.replace(/[^a-zA-Z0-9]/g, "")){
+                // Change the styling of the card
+                shoppeCards[j].classList.replace('shoppe-card-cart', 'shoppe-card')
+                // Remove the cart amount from the card
+                shoppeCards[j].querySelector('.cart-amount').textContent = "";
+                // Changing the total cost of the items in the cart
+                totalCostInCents -= shoppeCart[i].price * shoppeCart[i].amount;
+              }
+            }
+            // Removing the item selected from the cart
+            shoppeCart.splice(i,1)
+          }
+        }
+      }      
+      console.log(shoppeCart)
+      console.log(totalCostInCents)
+      renderCart()
     })
 
     document.addEventListener('contextmenu', (event) => {
@@ -665,15 +753,27 @@
           event.target.classList.replace('shoppe-card-cart', 'shoppe-card')
           event.target.querySelector('.cart-amount').textContent = "";
         }
-        console.log(shoppeCart)
-        console.log(totalCostInCents)
       } else if (event.target.matches('.shoppe-card')){
         event.preventDefault();
       }
+      console.log(shoppeCart)
+      console.log(totalCostInCents)
+      renderCart()
     })
 
-
-
+    function renderCart(){
+      const cartArea = document.querySelector("#cart-area");
+      cartArea.innerHTML=""
+      if (shoppeCart != []){
+        for(let i=0; i<shoppeCart.length; i++){
+          const para = document.createElement("p")
+          const itemInCart = document.createTextNode(shoppeCart[i].name+" \xA0x"+shoppeCart[i].amount)
+          para.classList.add("item-in-cart")
+          para.appendChild(itemInCart)
+          cartArea.appendChild(para)
+        }
+      }
+    }
 
   </script>
 
