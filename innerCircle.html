@@ -7,6 +7,13 @@
   <title>WYTCHES — Marble Basin, Washington</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="src/CSS/styles.css">
+  <script>
+    const previousPage = document.referrer
+    if (previousPage.includes('asItWasKnown')){
+    } else {
+      window.location.replace('asItWasKnown.html');
+    }
+  </script>
   <style>
     @media (min-width: 480px) {
       .offer-grid {
@@ -66,10 +73,10 @@
 
     <nav>
       <div class="nav-inner">
-        <a href__="index.html" class="active">~ Home ~</a>
+        <a href="index.html">~ Home ~</a>
         <a href="shoppe.html">~ Shoppe ~</a>
-        <a href__="about.html">~ About Us ~</a>
-        <a href__="guestbook.html">~ Guestbook ~</a>
+        <a href="about.html">~ About Us ~</a>
+        <a href="guestbook.html">~ Guestbook ~</a>
         <a href__="contact.html">~ Contact ~</a>
       </div>
     </nav>
@@ -182,13 +189,11 @@
 
       <div class="footer-links">
         <span>[ </span>
-        <a href__="index.html">Home</a>
+        <a href="index.html">Home</a>
         <span class="sep">|</span>
-        <a href__="shoppe.html">Shoppe</a>
+        <a href="shoppe.html">Shoppe</a>
         <span class="sep">|</span>
-        <a href__="about.html">About</a>
-        <span class="sep">|</span>
-        <a href__="contact.html">Contact</a>
+        <a href="about.html">About</a>
         <span> ]</span>
       </div>
 
@@ -209,7 +214,8 @@
       document.getElementById('counter').textContent =
         String(count).padStart(6, '0');
     })();
-  </script>
+    
+    </script>
 
 </body>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Inner Circle — Wytches</title>
+    <title>As It Was Known</title>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="src/CSS/styles.css">
     <style>
@@ -194,9 +194,8 @@
       <div class="nav-inner">
         <a href="index.html" class="active">~ Home ~</a>
         <a href="shoppe.html">~ Shoppe ~</a>
-        <a href__="about.html">~ About Us ~</a>
-        <a href__="guestbook.html">~ Guestbook ~</a>
-        <a href__="contact.html">~ Contact ~</a>
+        <a href="about.html">~ About Us ~</a>
+        <a href="guestbook.html">~ Guestbook ~</a>
       </div>
     </nav>
 
@@ -244,13 +243,11 @@
 
       <div class="footer-links">
         <span>[ </span>
-        <a href__="index.html">Home</a>
+        <a href="index.html">Home</a>
         <span class="sep">|</span>
-        <a href__="shoppe.html">Shoppe</a>
+        <a href="shoppe.html">Shoppe</a>
         <span class="sep">|</span>
-        <a href__="about.html">About</a>
-        <span class="sep">|</span>
-        <a href__="contact.html">Contact</a>
+        <a href="about.html">About</a>
         <span> ]</span>
       </div>
 
@@ -348,7 +345,7 @@
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             if (input.value.toLowerCase().trim() === PASSPHRASE) {
-                window.location.href = '/innerCircle';
+                window.location.href = 'innerCircle.html';
             } else {
                 errorDiv.style.visibility = '';
                 setTimeout(() => {

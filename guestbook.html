@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook — Wytches</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/CSS/styles.css">
+    <style>
+        .form-section {
+            border: 3px outset var(--border);
+            background: var(--bg-phase2);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        label {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+        }
+
+        input,
+        textarea {
+            background: var(--bg);
+            border: 3px inset var(--border);
+            padding: 0.5rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            font-size: 0.875rem;
+        }
+
+        button {
+            border: 3px outset var(--border);
+            background: var(--bg-phase3);
+            color: var(--primary-foreground);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.875rem;
+            padding: 0.375rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: var(--border);
+        }
+
+        button:active {
+            border-style: inset;
+        }
+
+        .submit-btn {
+            margin-top: 0.5rem;
+        }
+
+        .success-message {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            animation: blink 1s step-end infinite;
+        }
+
+        .success-message.hidden {
+            display: none;
+        }
+
+        .entries-section {
+            border: 3px outset hsl(275, 40%, 40%);
+            background: var(--purple);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry {
+            border: 3px var(--border);
+            background: var(--bg-phase1);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.25rem;
+        }
+
+        .entry-name {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .entry-date {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        .entry-message {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--foreground);
+        }
+
+        .entry-count {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        @keyframes blink {
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="wrapper">
+
+        <header>
+            <div class="icon-row">
+                <span style="animation: starTwinkle 2s ease-in-out infinite; display:inline-block; color:var(--gold-lt);">✦</span>
+                <span style="color:var(--purple-lt); font-size:1.3rem;">☽</span>
+                <span style="animation: starTwinkle 2s ease-in-out infinite 0.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+            </div>
+            <h1 class="glow">
+                <a href__="index.html">✦ WYTCHES ✦</a>
+            </h1>
+            <p class="sub">~ Marble Basin, Washington ~</p>
+            <p class="sub">"Where the Veil is Thin"</p>
+            <div class="symbol-row">
+                <span style="animation: starTwinkle 2s ease-in-out infinite 1s; display:inline-block; color:var(--gold-lt);">✦</span>
+                <span>&#9789; &#9734; &#9790;</span>
+                <span style="animation: starTwinkle 2s ease-in-out infinite 1.5s; display:inline-block; color:var(--gold-lt);">✦</span>
+            </div>
+        </header>
+
+        <div class="marquee-bar">
+            <span class="marquee-inner">
+                ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+            </span>
+            <span class="marquee-inner">
+                ★ Welcome to Wytches! ★ New shipment of crystals arriving this weekend! ★ Tarot readings available Tues & Thurs at the <a href="https://www.RocCafeAndCoffee.com">Roc Cafe</a>
+            </span>
+        </div>
+
+        <nav>
+            <div class="nav-inner">
+                <a href="index.html" class="active">~ Home ~</a>
+                <a href="shoppe.html">~ Shoppe ~</a>
+                <a href="about.html">~ About Us ~</a>
+                <a href="guestbook.html">~ Guestbook ~</a>
+            </div>
+        </nav>
+
+        <main>
+            <div class="box-raised">
+                <h2>☽ Guestbook ☾</h2>
+                <div class="retro-hr"></div>
+                <p>Sign our guestbook and let us know you visited!</p>
+
+                <!-- Sign Form -->
+                <div class="form-section">
+                    <h3>~ Sign the Book ~</h3>
+                    <div id="success-message" class="success-message hidden">
+                        ★ Thank you for signing our guestbook! ★
+                    </div>
+                    <form id="guestbook-form">
+                        <div class="form-group">
+                            <label for="name">Name (or leave blank for Anonymous):</label>
+                            <input type="text" id="name" placeholder="Your name or handle..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" rows="3" placeholder="Leave your mark..." required></textarea>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="submit-btn">✦ Sign ✦</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+                <!-- Entries -->
+                <div class="box-inset">
+                    <div id="entries-list"></div>
+                </div>
+
+                <p class="entry-count">Showing <span id="entry-count">8</span> entries</p>
+            </div>
+    </div>
+</body>
+
+<script>
+    const initialEntries = [
+        { name: "HikeAndBike", date: "Apr 9, 2026", message: "Came for the hiking and stayed for the wild stories. These girls sure know how to spin a ghost story!"},
+        { name: "Anonymous", date: "Apr 7, 2026", message: "The keys to the shoppe are so simple to find. Right in the open. Such knowledge should not be so readily available."},
+        { name: "N.F.Sense", date: "Mar 23, 2026", message: "Wonderful! Wonderful! Wonderful! Consider me intrigued!" },
+        { name: "SeraBell", date: "Mar 11, 2026", message: "You know where I am. Watch out for the crows." },
+        { name: "Scheupp", date: "Mar 11, 2026", message: "You are ignoring my emails. We need to talk about this." },
+        { name: "SidewalkFrutitSalad", date: "Feb 3, 2026", message: "Glad to see you got this up and running again, Sera. Keep on keeping that door locked." },
+        { name: "AveryThiews", date: "Jan 18, 2025", message: "Cannot believe this website has gone live again after all these years." },
+        { name: "GregKent", date: "Dec 29, 2025", message: "RISE FROM YOUR GRAVE!" },
+        { name: "SilverMoon47", date: "Oct 15, 1996", message: "Love this shop!! Drove all the way from Portland and got exactly what I was looking for! ☽" },
+        { name: "DarkRaven_WA", date: "Oct 12, 1996", message: "Best tarot reading I've ever had. Millie really knows the cards. Will definitely come back." },
+        { name: "CrystalChild", date: "Oct 8, 1996", message: "Crazy amount of birds - crows, I think - flock around this place. The owners must feed these things ALL THE TIME." },
+        { name: "HerbWitch_PDX", date: "Sep 30, 1996", message: "Your mugwort is the best quality I've found anywhere on the West Coast. Ordering more soon!" },
+        { name: "NightOwl", date: "Sep 25, 1996", message: "Stumbled in during a road trip. Didn't expect to find a place like this out here. It was a pleasant surprise." },
+        { name: "Stargazer", date: "Sep 19, 1996", message: "The full moon circle was beautiful. Thank you Emmeline for making newcomers feel so welcome." },
+        { name: "Anonymous", date: "Sep 14, 1996", message: "I found what I was looking for. Thank you." },
+        { name: "WanderingWitch", date: "Sep 2, 1996", message: "This town gives me chills (the good kind). The shop is the heart of it all. 5 pentacles out of 5!! ★★★★★" },
+    ];
+
+    let entries = [...initialEntries];
+
+    function renderEntries() {
+        const entriesList = document.getElementById('entries-list');
+        entriesList.innerHTML = entries.map((entry, i) => `
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="entry-name">${entry.name}</span>
+                        <span class="entry-date">${entry.date}</span>
+                    </div>
+                    <p class="entry-message">${entry.message}</p>
+                </div>
+            `).join('');
+
+        document.getElementById('entry-count').textContent = entries.length;
+    }
+
+    document.getElementById('guestbook-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById('name');
+        const messageInput = document.getElementById('message');
+        const successMsg = document.getElementById('success-message');
+
+        const newEntry = {
+            name: nameInput.value || 'Anonymous',
+            date: 'Just now',
+            message: messageInput.value,
+        };
+
+        entries.unshift(newEntry);
+        renderEntries();
+
+        nameInput.value = '';
+        messageInput.value = '';
+
+        successMsg.classList.remove('hidden');
+        setTimeout(() => {
+            successMsg.classList.add('hidden');
+        }, 3000);
+    });
+
+    renderEntries();
+</script>
+</body>
+
+</html>
