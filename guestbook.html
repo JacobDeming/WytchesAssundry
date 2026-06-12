@@ -84,14 +84,16 @@
         }
 
         .entries-section {
-            border: 3px outset hsl(275, 40%, 40%);
-            background: var(--purple);
+            border: 3px solid var(--border);
+            background: var(--bg);
             padding: 0.5rem;
             margin-bottom: 1rem;
+            height: 300px;
+            overflow-y: auto;
         }
 
         .entry {
-            border: 3px var(--border);
+            border: 3px outset var(--border);
             background: var(--bg-phase1);
             padding: 0.75rem;
             margin-bottom: 0.5rem;
@@ -214,7 +216,7 @@
             </div>
 
                 <!-- Entries -->
-                <div class="box-inset">
+                <div class="entries-section">
                     <div id="entries-list"></div>
                 </div>
 
@@ -225,11 +227,16 @@
 
 <script>
     const initialEntries = [
+        { name: "LarkspurLane", date: "Apr 28, 2026", message: "The tea blend you recommended worked wonders. My dreams have never been so vivid!" },
+        { name: "JustPassingThru", date: "Apr 18, 2026", message: "Strangest shop in the state, hands down. I'll be back next time I'm near." },
+        { name: "Anonymous", date: "Apr 13, 2026", message: "You still haven't fixed the mirror." },
         { name: "HikeAndBike", date: "Apr 9, 2026", message: "Came for the hiking and stayed for the wild stories. These girls sure know how to spin a ghost story!"},
         { name: "Anonymous", date: "Apr 7, 2026", message: "The keys to the shoppe are so simple to find. Right in the open. Such knowledge should not be so readily available."},
         { name: "N.F.Sense", date: "Mar 23, 2026", message: "Wonderful! Wonderful! Wonderful! Consider me intrigued!" },
         { name: "SeraBell", date: "Mar 11, 2026", message: "You know where I am. Watch out for the crows." },
         { name: "Scheupp", date: "Mar 11, 2026", message: "You are ignoring my emails. We need to talk about this." },
+        { name: "DustyBoots", date: "Mar 9, 2025", message: "I only stopped in for directions and left with a pocket full of herbs and a good fortune. Awesome people." },
+        { name: "WispWalker", date: "Feb 22, 2026", message: "Best incense selection west of the Cascades. The rosewood scent is haunting (in a good way)." },
         { name: "SidewalkFrutitSalad", date: "Feb 3, 2026", message: "Glad to see you got this up and running again, Sera. Keep on keeping that door locked." },
         { name: "AveryThiews", date: "Jan 18, 2025", message: "Cannot believe this website has gone live again after all these years." },
         { name: "GregKent", date: "Dec 29, 2025", message: "RISE FROM YOUR GRAVE!" },

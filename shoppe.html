@@ -198,13 +198,15 @@
     }
 
     #cart-button{
-      margin-top: 1px;
       padding: 4px;
+      height: 40px;
+      width: 200px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background-color: var(--gold);
       border: 3px outset var(--gold-lt);
+      cursor:pointer;
     }
 
     #cart-button:active {
@@ -265,9 +267,8 @@
       <div class="nav-inner">
         <a href="index.html">~ Home ~</a>
         <a href__="shoppe.html" class="active">~ Shoppe ~</a>
-        <a href__="about.html">~ About Us ~</a>
-        <a href__="guestbook.html">~ Guestbook ~</a>
-        <a href__="contact.html">~ Contact ~</a>
+        <a href="about.html">~ About Us ~</a>
+        <a href="guestbook.html">~ Guestbook ~</a>
       </div>
     </nav>
 
@@ -652,7 +653,9 @@
       <div id="cart-footer">
         <div class="retro-hr"></div>
         <div id="cart-area"></div>
-        <button id="cart-button"><i class="material-icons">lock</i>LOCKED</button>
+        <button id="cart-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm296.5-143.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"/></svg>
+          LOCKED</button>
       </div>
     </footer>
 
@@ -672,6 +675,7 @@
 
     let shoppeCart = [];
     let totalCostInCents = 0;
+    let unlock = ["Fluorite", "Labradorite"]
 
     document.addEventListener('click', (event) => {
       // Clicking on a shoppe card that has not been added to cart before
@@ -733,7 +737,11 @@
             shoppeCart.splice(i,1)
           }
         }
-      }      
+      } else if (event.target.matches('#cart-button')){
+        if (event.target.textContent=="UNLOCKED"){
+          window.location.href = 'asItWasKnown.html'
+        }
+      }
       console.log(shoppeCart)
       console.log(totalCostInCents)
       renderCart()
@@ -761,6 +769,7 @@
 
     function renderCart(){
       const cartArea = document.querySelector("#cart-area");
+      const lockedButton = document.querySelector("#cart-button")
       cartArea.innerHTML=""
       if (shoppeCart != []){
         for(let i=0; i<shoppeCart.length; i++){
@@ -771,6 +780,13 @@
           cartArea.appendChild(para)
         }
       }
+      if (shoppeCart.length==2 && shoppeCart.every(obj => unlock.includes(obj.name))){
+          lockedButton.innerHTML= ''
+          lockedButton.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M240-160h480v-400H240v400Zm296.5-143.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM240-160v-400 400Zm0 80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h280v-80q0-83 58.5-141.5T720-920q83 0 141.5 58.5T920-720h-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80h120q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Z"/></svg>UNLOCKED'
+      } else {
+        lockedButton.innerHTML=''
+        lockedButton.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm296.5-143.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"/></svg>LOCKED'
+        }
     }
 
   </script>

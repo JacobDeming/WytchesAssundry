@@ -7,13 +7,17 @@
   <title>WYTCHES — Marble Basin, Washington</title>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Courier+Prime&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="src/CSS/styles.css">
+
   <script>
+    // This checks to make sure they came from the correct page
+    // If they did not come from 'asItWasKnown.html' then they are directed to that page
     const previousPage = document.referrer
     if (previousPage.includes('asItWasKnown')){
     } else {
       window.location.replace('asItWasKnown.html');
     }
   </script>
+
   <style>
     @media (min-width: 480px) {
       .offer-grid {
